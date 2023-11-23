@@ -1,0 +1,43 @@
+---
+title: "Choices"
+---
+
+## The `if else` statement
+Choices enable you to run different code based on conditions / input.
+The most basic form of choices is the `if` statement.
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+z = 4
+if z % 2 == 0:  # True
+    print("z is even")
+```
+
+## R
+in one line
+```{r}
+z = 4
+if (z %% 2 == 0) print("z is even")
+```
+
+in several lines
+```{r}
+z = 5
+if (z %% 2 != 0) {
+  print("z is not even")
+}
+```
+
+## SQL
+
+```{sql}
+#| eval: FALSE
+SELECT
+  name
+  , age
+  , if age > 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'
+from persons;
+```
+:::

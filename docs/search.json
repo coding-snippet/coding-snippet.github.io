@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "coding-snippet",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\nPlotData\n\n\n\nprint(\"hello world\")\n\n[1] \"hello world\"\n\n\n\n\n\n1+1\n\n[1] 2"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,47 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "control_flow_if_else.html",
+    "href": "control_flow_if_else.html",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "control_flow_if_else.html#python",
+    "href": "control_flow_if_else.html#python",
+    "title": "Choices",
+    "section": "",
+    "text": "z = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even"
+  },
+  {
+    "objectID": "control_flow_if_else.html#r",
+    "href": "control_flow_if_else.html#r",
+    "title": "Choices",
+    "section": "",
+    "text": "in one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\""
+  },
+  {
+    "objectID": "control_flow_if_else.html#sql",
+    "href": "control_flow_if_else.html#sql",
+    "title": "Choices",
+    "section": "",
+    "text": "SELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;\n\n:::"
+  },
+  {
+    "objectID": "control_flow_if_else.html#the-if-statement",
+    "href": "control_flow_if_else.html#the-if-statement",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "control_flow_if_else.html#the-if-else-statement",
+    "href": "control_flow_if_else.html#the-if-else-statement",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
   }
 ]
