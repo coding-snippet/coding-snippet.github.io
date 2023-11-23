@@ -15,11 +15,11 @@ website:
     contents:
       - section: "Control Flow"
         contents:
-          - href: control_flow_if_else.qmd
-            text: if else, case when, switch...
-          - basics-knitr.qmd
-          - basics-jupyter.qmd
-      - section: "Layout"
+          - href: control_flow_choices.qmd
+            text: Choices
+          - href: control_flow_loops.qmd
+            text: Loops
+      - section: "Data Frames"
         contents:
           - layout.qmd
           - layout-knitr.qmd
