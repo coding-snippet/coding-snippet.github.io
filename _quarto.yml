@@ -21,7 +21,6 @@ website:
             text: Choices
           - href: pages/control-flow/loops.qmd
             text: Loops
-            
       - section: "Data Frames"
         contents:
           - href: pages/dataframes/filtering.qmd
