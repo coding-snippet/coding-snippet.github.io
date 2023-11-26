@@ -68,5 +68,82 @@
     "title": "Choices",
     "section": "",
     "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/control_flow_choices.html",
+    "href": "pages/control_flow_choices.html",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/control_flow_choices.html#the-if-else-statement",
+    "href": "pages/control_flow_choices.html#the-if-else-statement",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/about.html",
+    "href": "pages/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "pages/index.html",
+    "href": "pages/index.html",
+    "title": "coding-snippet",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\nPlotData\n\n\n\nprint(\"hello world\")\n\n[1] \"hello world\"\n\n\n\n\n\n1+1\n\n[1] 2"
+  },
+  {
+    "objectID": "pages/control-flow/choices.html",
+    "href": "pages/control-flow/choices.html",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/control-flow/choices.html#the-if-else-statement",
+    "href": "pages/control-flow/choices.html#the-if-else-statement",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/dataframes/filtering.html",
+    "href": "pages/dataframes/filtering.html",
+    "title": "Filtering dataframes",
+    "section": "",
+    "text": "library(readxl)\n\n# Read the Excel file\ncustomers &lt;- read_excel(\"data/sample_database.xlsx\", sheet = \"Customers\")\nFiltering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling."
+  },
+  {
+    "objectID": "pages/dataframes/filtering.html#filter-by-is-equal-to",
+    "href": "pages/dataframes/filtering.html#filter-by-is-equal-to",
+    "title": "Filtering dataframes",
+    "section": "Filter by “is equal to”",
+    "text": "Filter by “is equal to”\nThe most basic form of filtering is by comparing a search term with the values of a column in a dataframe.\n\nPythonRSQL\n\n\n\nz = 4\nif z % 2 == 0:  # True\n    print(\"z is even\")\n\nz is even\n\n\n\n\nin one line\n\nz = 4\nif (z %% 2 == 0) print(\"z is even\")\n\n[1] \"z is even\"\n\nprint(customers)\n\n# A tibble: 300 × 5\n   customer_id                          customer_name email phone_number address\n   &lt;chr&gt;                                &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  \n 1 f404e356-9bb2-46be-9359-9b31ad8e3dd1 Daisy Logan   xtho… +1-257-867-… \"867 T…\n 2 209268ef-253e-4e8f-802c-3bbe99f674b4 Beth Cain     vhow… (729)337-86… \"34586…\n 3 bc5407fe-a73e-4d1d-af82-df3226552e24 Amy Livingst… will… 269-646-797… \"22737…\n 4 90fe5f01-68b2-416c-a6d2-20c54482cb02 Tina Jones    brad… 585.834.264… \"6102 …\n 5 c384c54a-7493-4187-8e49-3c0da53722f1 Kelly Hall    gary… 273.491.653… \"642 T…\n 6 061e7018-c83b-4033-b856-b276af75f2c8 Patrick Schu… ibla… +1-327-163-… \"5500 …\n 7 07efdbc1-f90d-461c-881d-596be03fe3c3 Maria Bryant  nath… 317.055.075… \"345 H…\n 8 c8e33dd6-a0dc-466c-8c3a-827b2f6105f8 Jacob Russo   chri… 665-756-0636 \"PSC 1…\n 9 7fb04b39-5b5a-4e54-aa66-a319945327d8 Brandon Rosa… wils… 001-402-677… \"483 G…\n10 b57a3214-a9b5-4b17-acc3-46590aa3983a Crystal Alva… jaso… (630)724-27… \"898 J…\n# ℹ 290 more rows\n\n\nin several lines\n\nz = 5\nif (z %% 2 != 0) {\n  print(\"z is not even\")\n}\n\n[1] \"z is not even\"\n\n\n\n\n\nSELECT\n  name\n  , age\n  , if age &gt; 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'\nfrom persons;"
+  },
+  {
+    "objectID": "pages/dataframes/faking.html",
+    "href": "pages/dataframes/faking.html",
+    "title": "Faking Data",
+    "section": "",
+    "text": "Faking data is very useful for populating test databases. In fact, the script below was used to generate the example data used on this website.\n\nPython\n\n\n\nfrom faker import Faker\nimport pandas as pd\nimport random\n\nfake = Faker()\n\n# Generating customers\nnum_customers = 300\ncustomers = []\nfor _ in range(num_customers):\n    customers.append({\n        'customer_id': fake.uuid4(),\n        'customer_name': fake.name(),\n        'email': fake.email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating suppliers\nnum_suppliers = 12\nsuppliers = []\nfor _ in range(num_suppliers):\n    suppliers.append({\n        'supplier_id': fake.uuid4(),\n        'supplier_name': fake.company(),\n        'supplier_email': fake.company_email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating products\nnum_products = 30\nproducts = []\nfor i in range(num_products):\n    products.append({\n        'product_id': i + 1,\n        'product_name': fake.word(),\n        'product_description': fake.text(),\n        'price': round(random.uniform(10, 1000), 2),\n        'supplier_id': random.choice(suppliers)['supplier_id']\n    })\n\n# Generating orders\nnum_orders = 500\norders = []\nfor _ in range(num_orders):\n    customer = random.choice(customers)\n    order = {\n        'order_id': fake.uuid4(),\n        'customer_id': customer['customer_id'],\n        'product_id': random.choice(products)['product_id'],\n        'quantity': random.randint(1, 5),\n        'order_date': fake.date_this_year(),\n        'delivery_date': fake.date_between(start_date='today', end_date='+30d')\n    }\n    orders.append(order)\n\n# Creating DataFrames\ncustomers_df = pd.DataFrame(customers)\nsuppliers_df = pd.DataFrame(suppliers)\nproducts_df = pd.DataFrame(products)\norders_df = pd.DataFrame(orders)\n\n# Saving to Excel file\nwith pd.ExcelWriter('sample_database.xlsx', engine='openpyxl') as writer:\n    customers_df.to_excel(writer, sheet_name='Customers', index=False)\n    suppliers_df.to_excel(writer, sheet_name='Suppliers', index=False)\n    products_df.to_excel(writer, sheet_name='Products', index=False)\n    orders_df.to_excel(writer, sheet_name='Orders', index=False)"
+  },
+  {
+    "objectID": "pages/dataframes/faking.html#the-if-else-statement",
+    "href": "pages/dataframes/faking.html#the-if-else-statement",
+    "title": "Choices",
+    "section": "",
+    "text": "Choices enable you to run different code based on conditions / input. The most basic form of choices is the if statement.\n\nPython\n\n\n\nfrom faker import Faker\nimport pandas as pd\nimport random\n\nfake = Faker()\n\n# Generating customers\nnum_customers = 300\ncustomers = []\nfor _ in range(num_customers):\n    customers.append({\n        'customer_id': fake.uuid4(),\n        'customer_name': fake.name(),\n        'email': fake.email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating suppliers\nnum_suppliers = 12\nsuppliers = []\nfor _ in range(num_suppliers):\n    suppliers.append({\n        'supplier_id': fake.uuid4(),\n        'supplier_name': fake.company(),\n        'supplier_email': fake.company_email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating products\nnum_products = 30\nproducts = []\nfor i in range(num_products):\n    products.append({\n        'product_id': i + 1,\n        'product_name': fake.word(),\n        'product_description': fake.text(),\n        'price': round(random.uniform(10, 1000), 2),\n        'supplier_id': random.choice(suppliers)['supplier_id']\n    })\n\n# Generating orders\nnum_orders = 500\norders = []\nfor _ in range(num_orders):\n    customer = random.choice(customers)\n    order = {\n        'order_id': fake.uuid4(),\n        'customer_id': customer['customer_id'],\n        'product_id': random.choice(products)['product_id'],\n        'quantity': random.randint(1, 5),\n        'order_date': fake.date_this_year(),\n        'delivery_date': fake.date_between(start_date='today', end_date='+30d')\n    }\n    orders.append(order)\n\n# Creating DataFrames\ncustomers_df = pd.DataFrame(customers)\nsuppliers_df = pd.DataFrame(suppliers)\nproducts_df = pd.DataFrame(products)\norders_df = pd.DataFrame(orders)\n\n# Saving to Excel file\nwith pd.ExcelWriter('sample_database.xlsx', engine='openpyxl') as writer:\n    customers_df.to_excel(writer, sheet_name='Customers', index=False)\n    suppliers_df.to_excel(writer, sheet_name='Suppliers', index=False)\n    products_df.to_excel(writer, sheet_name='Products', index=False)\n    orders_df.to_excel(writer, sheet_name='Orders', index=False)"
+  },
+  {
+    "objectID": "pages/dataframes/faking.html#python",
+    "href": "pages/dataframes/faking.html#python",
+    "title": "Choices",
+    "section": "Python",
+    "text": "Python\n```{verbatim, engine=“python”} from faker import Faker import pandas as pd import random\nfake = Faker()"
   }
 ]
