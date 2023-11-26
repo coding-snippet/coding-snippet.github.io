@@ -116,7 +116,7 @@
     "href": "pages/dataframes/filtering.html",
     "title": "Filtering dataframes",
     "section": "",
-    "text": "library(readxl)\n\n# Read the Excel file\ncustomers &lt;- read_excel(\"data/sample_database.xlsx\", sheet = \"Customers\")\nFiltering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling."
+    "text": "# echo: false\nlibrary(readxl)\n\n# Read the Excel file\ncustomers &lt;- read_excel(\"data/sample_database.xlsx\", sheet = \"Customers\")\nFiltering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling."
   },
   {
     "objectID": "pages/dataframes/filtering.html#filter-by-is-equal-to",
