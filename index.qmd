@@ -1,14 +1,12 @@
 ---
-title: "coding-snippet"
+title: "Welcome to coding-snippet"
 ---
-
+```{r, setup, include=FALSE}
+source("setup.R")
+```
 This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>
 
 ::: {.panel-tabset}
 

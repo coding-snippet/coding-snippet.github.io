@@ -1,7 +1,9 @@
 ---
 title: "Choices"
 ---
-
+```{r, setup, include=FALSE}
+source("setup.R")
+```
 ## The `if else` statement
 Choices enable you to run different code based on conditions / input.
 The most basic form of choices is the `if` statement.

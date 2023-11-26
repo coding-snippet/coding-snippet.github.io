@@ -1,12 +1,8 @@
 ---
 title: "Filtering dataframes"
 ---
-```{r}
-#| echo: false
-library(readxl)
-
-# Read the Excel file
-customers <- read_excel("data/sample_database.xlsx", sheet = "Customers")
+```{r, setup, include=FALSE}
+source("setup.R")
 ```
 Filtering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling.
 
@@ -41,11 +37,10 @@ if (z %% 2 != 0) {
 ## SQL
 
 ```{sql}
-#| eval: FALSE
-SELECT
-  name
-  , age
-  , if age > 65 THEN 'oldie, but goldie' else 'adult or underaged' endif as 'Age Group'
-from persons;
+#| connection: con
+select
+  *
+from customers
+where customer_name = 'Anthony Guerra';
 ```
 :::
