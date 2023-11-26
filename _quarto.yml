@@ -15,13 +15,13 @@ website:
     contents:
       - section: "Data wrangling"
         contents:
-        - section: "Control flow"
-          contents:
-            - data-wrangling/choices.qmd
-        - section: "Data frames"
-          contents:
-            - data-wrangling/filtering.qmd
-        - data-wrangling/faking.qmd
+          - section: "Control flow"
+            contents:
+              - data-wrangling/choices.qmd
+          - section: "Data frames"
+            contents:
+              - data-wrangling/filtering.qmd
+          - data-wrangling/faking.qmd
 format:
   html:
     theme:
