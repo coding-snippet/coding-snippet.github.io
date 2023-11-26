@@ -1,5 +1,7 @@
 ---
 title: "Faking data"
+order: 3
+
 ---
 ```{r, setup, include=FALSE}
 source("setup.R")
