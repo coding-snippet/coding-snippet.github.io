@@ -2,33 +2,19 @@ project:
   type: website
   output-dir: docs
   execute-dir: project
-  
+
 website:
   title: "coding-snippet"
   navbar:
     left:
-      - href: pages/index.qmd
+      - href: index.qmd
         text: Home
-      - href: pages/about.qmd
+      - href: about.qmd
         text: About
   sidebar:
     style: "floating"
     search: true
-    contents:
-      - section: "Control Flow"
-        contents:
-          - href: pages/control-flow/choices.qmd
-            text: Choices
-          - href: pages/control-flow/loops.qmd
-            text: Loops
-      - section: "Data Frames"
-        contents:
-          - href: pages/dataframes/filtering.qmd
-            text: Filtering tables
-          - href: pages/dataframes/joins.qmd
-            text: Joining tables
-          - href: pages/dataframes/faking.qmd
-            text: Faking data
+    contents: auto
 format:
   html:
     theme:
@@ -37,6 +23,3 @@ format:
     css: styles.css
     page-layout: full
     toc: true
-
-
-

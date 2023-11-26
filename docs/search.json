@@ -116,7 +116,7 @@
     "href": "pages/dataframes/filtering.html",
     "title": "Filtering dataframes",
     "section": "",
-    "text": "# echo: false\nlibrary(readxl)\n\n# Read the Excel file\ncustomers &lt;- read_excel(\"data/sample_database.xlsx\", sheet = \"Customers\")\nFiltering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling."
+    "text": "Filtering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling."
   },
   {
     "objectID": "pages/dataframes/filtering.html#filter-by-is-equal-to",
@@ -128,7 +128,7 @@
   {
     "objectID": "pages/dataframes/faking.html",
     "href": "pages/dataframes/faking.html",
-    "title": "Faking Data",
+    "title": "Faking data",
     "section": "",
     "text": "Faking data is very useful for populating test databases. In fact, the script below was used to generate the example data used on this website.\n\nPython\n\n\n\nfrom faker import Faker\nimport pandas as pd\nimport random\n\nfake = Faker()\n\n# Generating customers\nnum_customers = 300\ncustomers = []\nfor _ in range(num_customers):\n    customers.append({\n        'customer_id': fake.uuid4(),\n        'customer_name': fake.name(),\n        'email': fake.email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating suppliers\nnum_suppliers = 12\nsuppliers = []\nfor _ in range(num_suppliers):\n    suppliers.append({\n        'supplier_id': fake.uuid4(),\n        'supplier_name': fake.company(),\n        'supplier_email': fake.company_email(),\n        'phone_number': fake.phone_number(),\n        'address': fake.address()\n    })\n\n# Generating products\nnum_products = 30\nproducts = []\nfor i in range(num_products):\n    products.append({\n        'product_id': i + 1,\n        'product_name': fake.word(),\n        'product_description': fake.text(),\n        'price': round(random.uniform(10, 1000), 2),\n        'supplier_id': random.choice(suppliers)['supplier_id']\n    })\n\n# Generating orders\nnum_orders = 500\norders = []\nfor _ in range(num_orders):\n    customer = random.choice(customers)\n    order = {\n        'order_id': fake.uuid4(),\n        'customer_id': customer['customer_id'],\n        'product_id': random.choice(products)['product_id'],\n        'quantity': random.randint(1, 5),\n        'order_date': fake.date_this_year(),\n        'delivery_date': fake.date_between(start_date='today', end_date='+30d')\n    }\n    orders.append(order)\n\n# Creating DataFrames\ncustomers_df = pd.DataFrame(customers)\nsuppliers_df = pd.DataFrame(suppliers)\nproducts_df = pd.DataFrame(products)\norders_df = pd.DataFrame(orders)\n\n# Saving to Excel file\nwith pd.ExcelWriter('sample_database.xlsx', engine='openpyxl') as writer:\n    customers_df.to_excel(writer, sheet_name='Customers', index=False)\n    suppliers_df.to_excel(writer, sheet_name='Suppliers', index=False)\n    products_df.to_excel(writer, sheet_name='Products', index=False)\n    orders_df.to_excel(writer, sheet_name='Orders', index=False)"
   },

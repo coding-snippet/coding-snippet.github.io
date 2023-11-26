@@ -1,5 +1,5 @@
 ---
-title: "Faking Data"
+title: "Faking data"
 ---
 
 Faking data is very useful for populating test databases. In fact, the script below was used to generate the example data used on this website.

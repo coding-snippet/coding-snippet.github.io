@@ -2,7 +2,7 @@
 title: "Filtering dataframes"
 ---
 ```{r}
-# echo: false
+#| echo: false
 library(readxl)
 
 # Read the Excel file
