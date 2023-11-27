@@ -4,22 +4,26 @@ title: "Welcome to coding-snippet"
 ```{r, setup, include=FALSE}
 source("setup.R")
 ```
-This is a Quarto website.
+## About Us
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>
+Welcome to coding-snippet! We offer an open source collection of data science snippets in various programming languages like Python, R and SQL that are relevant for data-related problems. Our platform is specifically designed for data enthusiasts who are tired of scanning the internet over and over again for the very same code snippets they use in theirs daily data analysis tasks.
 
-::: {.panel-tabset}
+### What We Offer
 
-## Plot
+- **Curated Code Snippets:** We documented a wide range of code snippets for problems that come across a data analyst's / data scientist's work day all the time. Copy, paste and adjust the snippets according to your problem.
 
-```{r}
-print("hello world")
-```
+- **Problem Oriented Approach:** As data scientists, we jump between coding and query languages all the time; writing a database query in SQL, adding another data source from a python-based web-scraper and visualizing the beautifully aggregated data as a plot in R ggplot. We noticed, that most coders document their snippets in a language oriented manner, having e.g. one document per language. We believe in the problem oriented approach, where the snippets are organized according to the problem.
 
-## Data
+- **Platform for Collaboration:** Become a collaborator on our Github repository and contribute to improving the quality and amount of the coding snippet base. We value your input and are always open for constructive critisism.
 
-```{r}
-1+1
-```
+### Our Mission
 
-:::
+We believe, that a well-organized documentation of the different problems and tools helps the data science community to work more efficiently and helps rookies to get started much faster. Feel free for reaching out to us for an informal (virtual or in-person) coffee.
+
+### Connect With Us
+
+Find us online [here](#) and on [Social Media Platform] for the latest updates, discussions, and insights.
+
+Thank you for taking part in our community and sharing our knowledge base with others!
+
+

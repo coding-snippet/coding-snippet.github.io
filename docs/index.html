@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -209,11 +175,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about-us" id="toc-about-us" class="nav-link active" data-scroll-target="#about-us">About Us</a>
+  <ul class="collapse">
+  <li><a href="#what-we-offer" id="toc-what-we-offer" class="nav-link" data-scroll-target="#what-we-offer">What We Offer</a></li>
+  <li><a href="#our-mission" id="toc-our-mission" class="nav-link" data-scroll-target="#our-mission">Our Mission</a></li>
+  <li><a href="#connect-with-us" id="toc-connect-with-us" class="nav-link" data-scroll-target="#connect-with-us">Connect With Us</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -232,31 +209,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"hello world"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "hello world"</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="about-us" class="level2">
+<h2 class="anchored" data-anchor-id="about-us">About Us</h2>
+<p>Welcome to coding-snippet! We offer an open source collection of data science snippets in various programming languages like Python, R and SQL that are relevant for data-related problems. Our platform is specifically designed for data enthusiasts who are tired of scanning the internet over and over again for the very same code snippets they use in theirs daily data analysis tasks.</p>
+<section id="what-we-offer" class="level3">
+<h3 class="anchored" data-anchor-id="what-we-offer">What We Offer</h3>
+<ul>
+<li><p><strong>Curated Code Snippets:</strong> We documented a wide range of code snippets for problems that come across a data analyst’s / data scientist’s work day all the time. Copy, paste and adjust the snippets according to your problem.</p></li>
+<li><p><strong>Problem Oriented Approach:</strong> As data scientists, we jump between coding and query languages all the time; writing a database query in SQL, adding another data source from a python-based web-scraper and visualizing the beautifully aggregated data as a plot in R ggplot. We noticed, that most coders document their snippets in a language oriented manner, having e.g.&nbsp;one document per language. We believe in the problem oriented approach, where the snippets are organized according to the problem.</p></li>
+<li><p><strong>Platform for Collaboration:</strong> Become a collaborator on our Github repository and contribute to improving the quality and amount of the coding snippet base. We value your input and are always open for constructive critisism.</p></li>
+</ul>
+</section>
+<section id="our-mission" class="level3">
+<h3 class="anchored" data-anchor-id="our-mission">Our Mission</h3>
+<p>We believe, that a well-organized documentation of the different problems and tools helps the data science community to work more efficiently and helps rookies to get started much faster. Feel free for reaching out to us for an informal (virtual or in-person) coffee.</p>
+</section>
+<section id="connect-with-us" class="level3">
+<h3 class="anchored" data-anchor-id="connect-with-us">Connect With Us</h3>
+<p>Find us online <a href="#">here</a> and on [Social Media Platform] for the latest updates, discussions, and insights.</p>
+<p>Thank you for taking part in our community and sharing our knowledge base with others!</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
