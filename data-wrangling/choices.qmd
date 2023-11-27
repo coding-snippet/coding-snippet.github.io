@@ -9,21 +9,22 @@ Choices enable you to run different code based on conditions / input.
 The most basic form of choices is the `if` statement.
 
 ::: {.panel-tabset}
-## Python
 
+## Python
+Note, that all
 ```{python}
-z = 5
+z = 4
 if z % 2 == 0:
-  print("z is even")
+    print("z is even")
 else:
-  print("z is uneven")
+    print("z is uneven")
 ```
 
 ## R
 in one line
 ```{r}
 z = 4
-if (z %% 2 == 0) print("z is even") else print("z is uneven")
+if (z %% 2 == 0) print("z is even") else print("z is odd")
 ```
 
 in several lines
@@ -32,7 +33,7 @@ z = 5
 if (z %% 2 == 0) {
   print("z is even")
 } else {
-  print("z is uneven")
+  print("z is odd")
 }
 ```
 
@@ -47,6 +48,115 @@ select
   ,  case when price >= 500 then 'high-price' else 'low-price' end as price_categ
 from
   products
+limit 5;
+```
+:::
+
+## The `elif` statement
+For more complex choices, the `elif` or `else if` statement can be used to reduce the number of lines of code and improve readability.
+
+::: {.panel-tabset}
+## Python
+```{python}
+def get_price_categ(price):
+  categ = str()
+  if price > 1000:
+    categ = "high"
+  elif price > 700:
+    categ = "middle"
+  elif price > 300:
+    categ = "low"
+  elif price > 0:
+    categ = "super cheap"
+  elif price == 0:
+    categ = "free"
+  else:
+    categ = "there must be an error"
+  return categ
+
+get_price_categ(750)  
+```
+
+## R
+The `if` in R works speifically or scalars.
+```{r}
+get_price_categ <- function(price) {
+  categ <- character()
+  if (price > 1000) {
+    categ <- "high"
+  } else if (price > 700) {
+    categ <- "middle"
+  } else if (price > 300) {
+    categ <- "low"
+  } else if (price > 0) {
+    categ <- "super cheap"
+  } else if (price == 0) {
+    categ <- "free"
+  } else {
+    categ <- "there must be an error"
+  }
+  return(categ)
+}
+
+get_price_categ(17)
+```
+
+## SQL
+Note, that many SQL flavours do not have a classic `elif`, but the `case when` can be used as an `elif` like the following:
+```{sql}
+#| connection: con
+
+select 
+  case 
+    when subquery.price > 1000 then 'high'
+    when subquery.price > 700 then 'middle'
+    when subquery.price > 300 then 'low'
+    when subquery.price > 0 then 'super cheap'
+    when subquery.price = 0 then 'free'
+    else 'there must be an error'
+  end as price_category
+from
+  (select 750 as price) as subquery;
+```
+:::
+
+## The `if` statement for vectors / columns
+A classic task in data cleaning is changing the values of a column in a df to a different value, based on conditions.
+
+::: {.panel-tabset}
+## Python
+```{python}
+#| eval: false
+import pandas as pd
+df = orders[['quantity']].copy()
+df['order_size'] = df['quantity'].apply(lambda x: 'large' if x >= 3 else 'small')
+df = df.iloc[0:5]
+
+print(df)
+
+```
+
+## R
+The `ifelse` in R works specifically for vectors.
+```{r}
+df <- orders %>% 
+  select(quantity) %>% 
+  mutate(order_size = ifelse(quantity >= 3, "large", "small")) %>% 
+  slice(1:5)
+df
+```
+
+## SQL
+```{sql}
+#| connection: con
+select 
+  quantity,
+  case
+    when quantity >= 3 then 'large'
+    else 'small'
+  end as order_size
+from 
+  orders
 limit 5;
 ```
 :::
