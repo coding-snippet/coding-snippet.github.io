@@ -6,7 +6,7 @@ source("setup.R")
 ```
 ## About Us
 
-Welcome to coding-snippet! We offer an open source collection of data science snippets in various programming languages like Python, R and SQL that are relevant for data-related problems. Our platform is specifically designed for data enthusiasts who are tired of scanning the internet over and over again for the very same code snippets they use in theirs daily data analysis tasks.
+Welcome to coding-snippet! We offer an open source collection of data science snippets in various programming languages like Python, R and SQL that are relevant for data-related problems. Our platform is specifically designed for data enthusiasts who are tired of scanning the internet over and over again for the very same code snippets they use in their daily data analysis tasks.
 
 ### What We Offer
 
@@ -14,7 +14,7 @@ Welcome to coding-snippet! We offer an open source collection of data science sn
 
 - **Problem Oriented Approach:** As data scientists, we jump between coding and query languages all the time; writing a database query in SQL, adding another data source from a python-based web-scraper and visualizing the beautifully aggregated data as a plot in R ggplot. We noticed, that most coders document their snippets in a language oriented manner, having e.g. one document per language. We believe in the problem oriented approach, where the snippets are organized according to the problem.
 
-- **Platform for Collaboration:** Become a collaborator on our Github repository and contribute to improving the quality and amount of the coding snippet base. We value your input and are always open for constructive critisism.
+- **Platform for Collaboration:** Become a collaborator on our Github repository and contribute to improving the quality and amount of the coding snippet base. We value your input and are always open for constructive criticism.
 
 ### Our Mission
 
@@ -22,7 +22,7 @@ We believe, that a well-organized documentation of the different problems and to
 
 ### Connect With Us
 
-Find us online [here](#) and on [Social Media Platform] for the latest updates, discussions, and insights.
+Find us online [here](#) and on LinkedIn for the latest updates, discussions, and insights.
 
 Thank you for taking part in our community and sharing our knowledge base with others!
 

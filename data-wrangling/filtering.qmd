@@ -23,7 +23,6 @@ in one line
 ```{r}
 z = 4
 if (z %% 2 == 0) print("z is even")
-print(customers)
 ```
 
 in several lines
@@ -40,7 +39,9 @@ if (z %% 2 != 0) {
 #| connection: con
 select
   *
-from customers
-where customer_name = 'Anthony Guerra';
+from 
+  customers
+where 0=0
+  and customer_name = 'Anthony Guerra';
 ```
 :::
