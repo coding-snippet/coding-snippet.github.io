@@ -1,0 +1,90 @@
+---
+title: "Loops"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+## The `for` loop
+`for` loops are probably the most used form of loops. A for loop iterates over iterable objects such as lists, vectors, sets and other data structures. In contrast to the `while` loop, the `for` loop is less prone to ending up in infinite loop and is therefore preferable.
+:::{{.callout-note}}
+Note, that for loops can often be replaced with the more sophisticated apply, sapply or lapply.
+:::
+
+:::{.panel-tabset}
+
+## Python
+Iterate over the items in a list:
+```{python}
+x = ["hello", "my", "name", "is", "eugen", "what's", "your", "name?"]
+for i in x:
+    print(i)
+```
+Get the index of the element using enumerate():
+```{python}
+x = ["hello", "my", "name", "is", "eugen", "what's", "your", "name?"]
+for i, value in enumerate(x):
+    print(f"{i} {value}")
+```
+
+:::{.callout-caution}
+Keep in mind, that iterables start with the index `0` in python
+:::
+
+Jump to next iteration using `continue`, exit the loop using `break`:
+```{python}
+x = ["hello", "my", "name", "is", "eugen", "what's", "your", "name?"]
+for i in x:
+    if i in ["my", "name", "is"]:
+        continue
+    else:
+        print(i)
+        if i == "eugen":
+            break
+```
+
+## R
+Iterate over the items in a vector:
+```{r}
+x = c("hello", "my", "name", "is", "eugen", "what's", "your", "name?")
+for (i in x) {
+  print(i)
+}
+```
+Get the index of the element using seq_along():
+```{r}
+x = c("hello", "my", "name", "is", "eugen", "what's", "your", "name?")
+for (i in seq_along(x)) { # always use seq_along instead of 1:length(x) or 1:nrow(df)
+  print(paste(i,x[i]))
+}
+```
+
+:::{.callout-caution}
+Keep in mind, that iterables start with the index `1` in R.
+:::
+
+Jump to next iteration using `next`, exit the loop using `break`:
+```{r}
+x = c("hello", "my", "name", "is", "eugen", "what's", "your", "name?")
+for (i in x) {
+  if (i %in% c("my", "name", "is")) {
+    next
+  } else {
+    print(i)
+    if (i == "eugen") break
+  }
+}
+```
+
+## Bash
+```{bash}
+#!/bin/bash
+
+x=("hello" "my" "name" "is" "eugen" "what's" "your" "name?")
+
+for i in "${x[@]}"
+do
+    echo "$i"
+done
+```
+
+:::

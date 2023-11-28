@@ -18,10 +18,12 @@ website:
           - section: "Control flow"
             contents:
               - data-wrangling/choices.qmd
+              - data-wrangling/loops.qmd
           - section: "Data frames"
             contents:
               - data-wrangling/filtering.qmd
           - data-wrangling/faking.qmd
+          
 format:
   html:
     theme:

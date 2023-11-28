@@ -49,6 +49,18 @@ from
   (select 750 as price)
 limit 5;
 ```
+## Bash
+```{bash}
+#!/bin/bash
+
+z=4
+
+if [ $((z % 2)) -eq 0 ]; then
+    echo "z is even"
+else
+    echo "z is odd"
+fi
+```
 :::
 
 ## The `elif` statement
