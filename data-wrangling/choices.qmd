@@ -41,21 +41,25 @@ if (z %% 2 == 0) {
 Note, that SQLite does not support the "normal" `if` statement. However, the same can be achieved with the `case when` statement.
 ```{sql}
 #| connection: con
--- SQLite flavour
+-- SQLite flavor
 select
-  product_id
-  , price
+  price
   ,  case when price >= 500 then 'high-price' else 'low-price' end as price_categ
 from
-  products
+  (select 750 as price)
 limit 5;
 ```
 :::
 
 ## The `elif` statement
-For more complex choices, the `elif` or `else if` statement can be used to reduce the number of lines of code and improve readability.
+For more complex choices, the `elif` or `else if` statement can be used.
+
+:::{.callout-caution}
+Keep in mind, that only the line of code in the **first** `ture` condition will run. The order of conditions matters!
+:::
 
 ::: {.panel-tabset}
+
 ## Python
 ```{python}
 def get_price_categ(price):
@@ -78,7 +82,8 @@ get_price_categ(750)
 ```
 
 ## R
-The `if` in R works speifically or scalars.
+The `if` in R works specifically or scalars.
+
 ```{r}
 get_price_categ <- function(price) {
   categ <- character()
@@ -102,17 +107,18 @@ get_price_categ(17)
 ```
 
 ## SQL
-Note, that many SQL flavours do not have a classic `elif`, but the `case when` can be used as an `elif` like the following:
+Note, that many SQL flavors do not have a classic `elif`, but the `case when` can be used as an `elif` like the following:
 ```{sql}
 #| connection: con
-
+-- SQLite flavor
 select 
+  price,
   case 
-    when subquery.price > 1000 then 'high'
-    when subquery.price > 700 then 'middle'
-    when subquery.price > 300 then 'low'
-    when subquery.price > 0 then 'super cheap'
-    when subquery.price = 0 then 'free'
+    when price > 1000 then 'high'
+    when price > 700 then 'middle'
+    when price > 300 then 'low'
+    when price > 0 then 'super cheap'
+    when price = 0 then 'free'
     else 'there must be an error'
   end as price_category
 from
@@ -120,7 +126,7 @@ from
 ```
 :::
 
-## The `if` statement for vectors / columns
+## The `if` / `elif` / `case when` statement for vectors / columns
 A classic task in data cleaning is changing the values of a column in a df to a different value, based on conditions.
 
 ::: {.panel-tabset}
@@ -141,7 +147,22 @@ The `ifelse` in R works specifically for vectors.
 ```{r}
 df <- orders %>% 
   select(quantity) %>% 
-  mutate(order_size = ifelse(quantity >= 3, "large", "small")) %>% 
+  mutate(order_size = ifelse(quantity > 3, "large", "small")) %>% 
+  slice(1:5)
+df
+```
+For more conditions, the `dplyr::case_when` feels more natural and improves readability, especially when having several conditions
+```{r}
+df <- orders %>%
+  select(quantity) %>% 
+  mutate(
+    quantity_categ = case_when(
+      quantity == 1 ~ "small",
+      quantity %in% c(2, 3) ~ "middle",
+      quantity > 3 ~ "large",
+      TRUE ~ "there must be sth wrong" # this line is like an "else"
+    )
+  ) %>% 
   slice(1:5)
 df
 ```
@@ -149,14 +170,33 @@ df
 ## SQL
 ```{sql}
 #| connection: con
-select 
-  quantity,
-  case
-    when quantity >= 3 then 'large'
-    else 'small'
-  end as order_size
-from 
-  orders
+-- SQLite flavor
+select quantity,
+    case
+        when quantity = 1 then 'small'
+        when quantity IN (2, 3) then 'middle'
+        when quantity > 3 then 'large'
+        else 'there must be sth wrong'
+    end as quantity_categ
+from orders
 limit 5;
+```
+:::
+
+## The `switch` statement
+The switch statement is especially useful for getting values from a dictionary-like construct with key and value.
+
+::: {.panel-tabset}
+## R
+```{r}
+get_height <- function(x) {
+  switch(x,
+    "eiffel tower" = 330,
+    "Burj Khalifa" = 828,
+    "Shanghai Tower" = 632,
+    stop("not found") # always include a "not found" for debugging purposes
+  )
+}
+get_height("Shanghai Tower")
 ```
 :::

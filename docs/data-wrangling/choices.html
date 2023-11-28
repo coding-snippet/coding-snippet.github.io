@@ -216,7 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#the-if-statement" id="toc-the-if-statement" class="nav-link active" data-scroll-target="#the-if-statement">The <code>if</code> statement</a></li>
   <li><a href="#the-elif-statement" id="toc-the-elif-statement" class="nav-link" data-scroll-target="#the-elif-statement">The <code>elif</code> statement</a></li>
-  <li><a href="#the-if-statement-for-vectors-columns" id="toc-the-if-statement-for-vectors-columns" class="nav-link" data-scroll-target="#the-if-statement-for-vectors-columns">The <code>if</code> statement for vectors / columns</a></li>
+  <li><a href="#the-if-elif-case-when-statement-for-vectors-columns" id="toc-the-if-elif-case-when-statement-for-vectors-columns" class="nav-link" data-scroll-target="#the-if-elif-case-when-statement-for-vectors-columns">The <code>if</code> / <code>elif</code> / <code>case when</code> statement for vectors / columns</a></li>
+  <li><a href="#the-switch-statement" id="toc-the-switch-statement" class="nav-link" data-scroll-target="#the-switch-statement">The <code>switch</code> statement</a></li>
   </ul>
 </nav>
     </div>
@@ -284,48 +285,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Note, that SQLite does not support the “normal” <code>if</code> statement. However, the same can be achieved with the <code>case when</code> statement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- SQLite flavour</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- SQLite flavor</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  product_id</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  , price</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  ,  <span class="cf">case</span> <span class="cf">when</span> price <span class="op">&gt;=</span> <span class="dv">500</span> <span class="cf">then</span> <span class="st">'high-price'</span> <span class="cf">else</span> <span class="st">'low-price'</span> <span class="cf">end</span> <span class="kw">as</span> price_categ</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  products</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  price</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  ,  <span class="cf">case</span> <span class="cf">when</span> price <span class="op">&gt;=</span> <span class="dv">500</span> <span class="cf">then</span> <span class="st">'high-price'</span> <span class="cf">else</span> <span class="st">'low-price'</span> <span class="cf">end</span> <span class="kw">as</span> price_categ</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">select</span> <span class="dv">750</span> <span class="kw">as</span> price)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
-<caption>5 records</caption>
+<caption>1 records</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">product_id</th>
 <th style="text-align: right;">price</th>
 <th style="text-align: left;">price_categ</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: right;">657.16</td>
-<td style="text-align: left;">high-price</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: right;">135.03</td>
-<td style="text-align: left;">low-price</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: right;">789.25</td>
-<td style="text-align: left;">high-price</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: right;">521.62</td>
-<td style="text-align: left;">high-price</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: right;">730.41</td>
+<td style="text-align: right;">750</td>
 <td style="text-align: left;">high-price</td>
 </tr>
 </tbody>
@@ -338,7 +316,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-elif-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-elif-statement">The <code>elif</code> statement</h2>
-<p>For more complex choices, the <code>elif</code> or <code>else if</code> statement can be used to reduce the number of lines of code and improve readability.</p>
+<p>For more complex choices, the <code>elif</code> or <code>else if</code> statement can be used.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Keep in mind, that only the line of code in the <strong>first</strong> <code>ture</code> condition will run. The order of conditions matters!</p>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">SQL</a></li></ul>
 <div class="tab-content">
@@ -367,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>The <code>if</code> in R works speifically or scalars.</p>
+<p>The <code>if</code> in R works specifically or scalars.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>get_price_categ <span class="ot">&lt;-</span> <span class="cf">function</span>(price) {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  categ <span class="ot">&lt;-</span> <span class="fu">character</span>()</span>
@@ -394,28 +385,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p>Note, that many SQL flavours do not have a classic <code>elif</code>, but the <code>case when</code> can be used as an <code>elif</code> like the following:</p>
+<p>Note, that many SQL flavors do not have a classic <code>elif</code>, but the <code>case when</code> can be used as an <code>elif</code> like the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> subquery.price <span class="op">&gt;</span> <span class="dv">1000</span> <span class="cf">then</span> <span class="st">'high'</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> subquery.price <span class="op">&gt;</span> <span class="dv">700</span> <span class="cf">then</span> <span class="st">'middle'</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> subquery.price <span class="op">&gt;</span> <span class="dv">300</span> <span class="cf">then</span> <span class="st">'low'</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> subquery.price <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">'super cheap'</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> subquery.price <span class="op">=</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">'free'</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">'there must be an error'</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span> <span class="kw">as</span> price_category</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> (<span class="kw">select</span> <span class="dv">750</span> <span class="kw">as</span> price) <span class="kw">as</span> subquery;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- SQLite flavor</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  price,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> price <span class="op">&gt;</span> <span class="dv">1000</span> <span class="cf">then</span> <span class="st">'high'</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> price <span class="op">&gt;</span> <span class="dv">700</span> <span class="cf">then</span> <span class="st">'middle'</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> price <span class="op">&gt;</span> <span class="dv">300</span> <span class="cf">then</span> <span class="st">'low'</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> price <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">'super cheap'</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> price <span class="op">=</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">'free'</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">'there must be an error'</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span> <span class="kw">as</span> price_category</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">select</span> <span class="dv">750</span> <span class="kw">as</span> price) <span class="kw">as</span> subquery;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
 <caption>1 records</caption>
 <thead>
 <tr class="header">
+<th style="text-align: right;">price</th>
 <th style="text-align: left;">price_category</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">750</td>
 <td style="text-align: left;">middle</td>
 </tr>
 </tbody>
@@ -426,8 +422,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-if-statement-for-vectors-columns" class="level2">
-<h2 class="anchored" data-anchor-id="the-if-statement-for-vectors-columns">The <code>if</code> statement for vectors / columns</h2>
+<section id="the-if-elif-case-when-statement-for-vectors-columns" class="level2">
+<h2 class="anchored" data-anchor-id="the-if-elif-case-when-statement-for-vectors-columns">The <code>if</code> / <code>elif</code> / <code>case when</code> statement for vectors / columns</h2>
 <p>A classic task in data cleaning is changing the values of a column in a df to a different value, based on conditions.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">SQL</a></li></ul>
@@ -447,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> orders <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(quantity) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">order_size =</span> <span class="fu">ifelse</span>(quantity <span class="sc">&gt;=</span> <span class="dv">3</span>, <span class="st">"large"</span>, <span class="st">"small"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">order_size =</span> <span class="fu">ifelse</span>(quantity <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"large"</span>, <span class="st">"small"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -456,36 +452,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
      &lt;dbl&gt; &lt;chr&gt;     
 1        2 small     
 2        5 large     
-3        3 large     
+3        3 small     
 4        2 small     
 5        1 small     </code></pre>
+</div>
+</div>
+<p>For more conditions, the <code>dplyr::case_when</code> feels more natural and improves readability, especially when having several conditions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> orders <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(quantity) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantity_categ =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      quantity <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      quantity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">~</span> <span class="st">"middle"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      quantity <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"large"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"there must be sth wrong"</span> <span class="co"># this line is like an "else"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  quantity quantity_categ
+     &lt;dbl&gt; &lt;chr&gt;         
+1        2 middle        
+2        5 large         
+3        3 middle        
+4        2 middle        
+5        1 small         </code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  quantity,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> quantity <span class="op">&gt;=</span> <span class="dv">3</span> <span class="cf">then</span> <span class="st">'large'</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">'small'</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span> <span class="kw">as</span> order_size</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  orders</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- SQLite flavor</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> quantity,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">when</span> quantity <span class="op">=</span> <span class="dv">1</span> <span class="cf">then</span> <span class="st">'small'</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">when</span> quantity <span class="kw">IN</span> (<span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">then</span> <span class="st">'middle'</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">when</span> quantity <span class="op">&gt;</span> <span class="dv">3</span> <span class="cf">then</span> <span class="st">'large'</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="st">'there must be sth wrong'</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span> <span class="kw">as</span> quantity_categ</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> orders</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
 <caption>5 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">quantity</th>
-<th style="text-align: left;">order_size</th>
+<th style="text-align: left;">quantity_categ</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">small</td>
+<td style="text-align: left;">middle</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">5</td>
@@ -493,11 +515,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: left;">large</td>
+<td style="text-align: left;">middle</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">small</td>
+<td style="text-align: left;">middle</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
@@ -505,6 +527,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-switch-statement" class="level2">
+<h2 class="anchored" data-anchor-id="the-switch-statement">The <code>switch</code> statement</h2>
+<p>The switch statement is especially useful for getting values from a dictionary-like construct with key and value.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>get_height <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(x,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eiffel tower"</span> <span class="ot">=</span> <span class="dv">330</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Burj Khalifa"</span> <span class="ot">=</span> <span class="dv">828</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Shanghai Tower"</span> <span class="ot">=</span> <span class="dv">632</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"not found"</span>) <span class="co"># always include a "not found" for debugging purposes</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_height</span>(<span class="st">"Shanghai Tower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 632</code></pre>
 </div>
 </div>
 </div>
