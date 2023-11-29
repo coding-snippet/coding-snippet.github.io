@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "coding-styles/functions.html",
+    "href": "coding-styles/functions.html",
+    "title": "Functional",
+    "section": "",
+    "text": "Following the DRY principle (don’t repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called arguments, while to actual logic performed by the function happens in the body.\n\nPythonRBash\n\n\n\nimport pandas as pd\n\ndef get_product_quantity(product):\n  \"\"\"\n  Function to get the total quantity of a specific product from orders table.\n  \n  Arguments:\n  product: A string specifying the product name.\n  \n  Returns:\n  The total quantity of the specified product.\n  \"\"\"\n  merged_data = pd.merge(orders, products, on=\"product_id\", how=\"inner\")\n  filtered_data = merged_data[merged_data['product_name'] == product]\n  quantity_sum = filtered_data['quantity'].sum()\n  return quantity_sum\n\nget_product_quantity(\"field\")\n\n46.0\n\n\n\n\n\nget_product_quantity &lt;- function(product) {\n  result &lt;- orders %&gt;%\n    inner_join(products, by = \"product_id\") %&gt;% \n    filter(product_name == product) %&gt;% \n    summarize(sum = sum(quantity)) %&gt;% \n    pull(sum) \n  return(result)\n}\n\nget_product_quantity(\"field\")\n\n[1] 46\n\n\n\n\n\n#!/bin/bash\n\ngreet() {\n    local name=$1\n    local message=$2\n    echo \"Hello, $name! $message\"\n}\n\ngreet \"Alice\" \"Hope you're having a great day!\"\n\nHello, Alice! Hope you're having a great day!"
+  },
+  {
+    "objectID": "coding-styles/functions.html#functional-programming",
+    "href": "coding-styles/functions.html#functional-programming",
+    "title": "Functional",
+    "section": "",
+    "text": "Following the DRY principle (don’t repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called arguments, while to actual logic performed by the function happens in the body.\n\nPythonRBash\n\n\n\nimport pandas as pd\n\ndef get_product_quantity(product):\n  \"\"\"\n  Function to get the total quantity of a specific product from orders table.\n  \n  Arguments:\n  product: A string specifying the product name.\n  \n  Returns:\n  The total quantity of the specified product.\n  \"\"\"\n  merged_data = pd.merge(orders, products, on=\"product_id\", how=\"inner\")\n  filtered_data = merged_data[merged_data['product_name'] == product]\n  quantity_sum = filtered_data['quantity'].sum()\n  return quantity_sum\n\nget_product_quantity(\"field\")\n\n46.0\n\n\n\n\n\nget_product_quantity &lt;- function(product) {\n  result &lt;- orders %&gt;%\n    inner_join(products, by = \"product_id\") %&gt;% \n    filter(product_name == product) %&gt;% \n    summarize(sum = sum(quantity)) %&gt;% \n    pull(sum) \n  return(result)\n}\n\nget_product_quantity(\"field\")\n\n[1] 46\n\n\n\n\n\n#!/bin/bash\n\ngreet() {\n    local name=$1\n    local message=$2\n    echo \"Hello, $name! $message\"\n}\n\ngreet \"Alice\" \"Hope you're having a great day!\"\n\nHello, Alice! Hope you're having a great day!"
+  },
+  {
     "objectID": "data-wrangling/loops.html",
     "href": "data-wrangling/loops.html",
     "title": "Loops",

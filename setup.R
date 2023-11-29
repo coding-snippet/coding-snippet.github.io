@@ -2,6 +2,8 @@ library(DBI)
 library(knitr)
 library(readxl)
 library(dplyr)
+library(reticulate)
+library(renv)
 
 # Establish a connection to the SQLite database
 con <- dbConnect(RSQLite::SQLite(), "data/db.sqlite")

@@ -1,0 +1,71 @@
+---
+title: "Functional"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+## Functional programming
+Following the DRY principle (don't repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called `arguments`, while to actual logic performed by the function happens in the `body`.
+
+:::{.panel-tabset}
+
+## Python
+```{python}
+import pandas as pd
+
+def get_product_quantity(product):
+  """
+  Function to get the total quantity of a specific product from orders table.
+  
+  Arguments:
+  product: A string specifying the product name.
+  
+  Returns:
+  The total quantity of the specified product.
+  """
+  merged_data = pd.merge(orders, products, on="product_id", how="inner")
+  filtered_data = merged_data[merged_data['product_name'] == product]
+  quantity_sum = filtered_data['quantity'].sum()
+  return quantity_sum
+
+get_product_quantity("field")
+```
+
+## R
+```{r}
+get_product_quantity <- function(product) {
+  result <- orders %>%
+    inner_join(products, by = "product_id") %>% 
+    filter(product_name == product) %>% 
+    summarize(sum = sum(quantity)) %>% 
+    pull(sum) 
+  return(result)
+}
+
+get_product_quantity("field")
+```
+
+
+## Bash
+```{bash}
+#!/bin/bash
+
+greet() {
+    local name=$1
+    local message=$2
+    echo "Hello, $name! $message"
+}
+
+greet "Alice" "Hope you're having a great day!"
+```
+
+:::

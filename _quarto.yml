@@ -23,7 +23,10 @@ website:
             contents:
               - data-wrangling/filtering.qmd
           - data-wrangling/faking.qmd
-          
+      - section: "Coding styles"
+        contents:
+          - coding-styles/functions.qmd
+
 format:
   html:
     theme:
