@@ -13,6 +13,7 @@ products = r.products
 customers = r.customers
 suppliers = r.suppliers
 ```
+
 ## Functional programming
 Following the DRY principle (don't repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called `arguments`, while to actual logic performed by the function happens in the `body`.
 

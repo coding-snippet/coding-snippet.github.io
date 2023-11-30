@@ -240,6 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-if-statement" id="toc-the-if-statement" class="nav-link active" data-scroll-target="#the-if-statement">The <code>if</code> statement</a></li>
   <li><a href="#the-elif-statement" id="toc-the-elif-statement" class="nav-link" data-scroll-target="#the-elif-statement">The <code>elif</code> statement</a></li>
   <li><a href="#the-if-elif-case-when-statement-for-vectors-columns" id="toc-the-if-elif-case-when-statement-for-vectors-columns" class="nav-link" data-scroll-target="#the-if-elif-case-when-statement-for-vectors-columns">The <code>if</code> / <code>elif</code> / <code>case when</code> statement for vectors / columns</a></li>
+  <li><a href="#working-with-and-and-or" id="toc-working-with-and-and-or" class="nav-link" data-scroll-target="#working-with-and-and-or">Working with <code>and</code> and <code>or</code></a></li>
   <li><a href="#the-switch-statement" id="toc-the-switch-statement" class="nav-link" data-scroll-target="#the-switch-statement">The <code>switch</code> statement</a></li>
   </ul>
 </nav>
@@ -271,7 +272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">SQL</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Bash</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Note, that all</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> z <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -366,7 +366,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Keep in mind, that only the line of code in the <strong>first</strong> <code>ture</code> condition will run. The order of conditions matters!</p>
+<p>Keep in mind, that only the line of code in the <strong>first</strong> <code>true</code> condition will run. The order of conditions matters!</p>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -572,23 +572,121 @@ Caution
 </div>
 </div>
 </section>
+<section id="working-with-and-and-or" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-and-and-or">Working with <code>and</code> and <code>or</code></h2>
+<p>For more complex choices, where several combinations of conditions are necessary, the conditions are comibned using <code>and</code>, <code>or</code> and brackets to group conditions together.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">SQL</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>income <span class="op">=</span> <span class="dv">35000</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical conditions</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>is_young_adult <span class="op">=</span> <span class="dv">18</span> <span class="op">&lt;=</span> age <span class="op">&lt;=</span> <span class="dv">30</span>    <span class="co"># Age between 18 and 30</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>has_low_income <span class="op">=</span> income <span class="op">&lt;</span> <span class="dv">30000</span>             <span class="co"># Income below 30,000</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>is_student <span class="op">=</span> student                       <span class="co"># Is a student</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining conditions with 'and', 'or', and brackets</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_young_adult <span class="kw">and</span> (has_low_income <span class="kw">or</span> is_student):</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Financial support applicable"</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Financial support not applicable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Financial support applicable</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For performance improvement, it may be useful to use <code>&amp;&amp;</code> instead of <code>&amp;</code>. The <code>&amp;&amp;</code> operator will only run the condition(s) on the right handside, if the condition on the left handside is TRUE, saving unnecessary computaion.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="dv">35000</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>student <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical conditions</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>is_young_adult <span class="ot">&lt;-</span> age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">30</span>   <span class="co"># Age between 18 and 30</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>has_low_income <span class="ot">&lt;-</span> income <span class="sc">&lt;</span> <span class="dv">30000</span>          <span class="co"># Income below 30,000</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>is_student <span class="ot">&lt;-</span> student                     <span class="co"># Is a student</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining conditions with 'and', 'or', and brackets</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_young_adult <span class="sc">&amp;</span> (has_low_income <span class="sc">|</span> is_student)) {</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Financial support applicable"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Financial support not applicable"</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Financial support applicable"</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- sample data</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">with</span> <span class="kw">data</span> <span class="kw">as</span> (</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">select</span> <span class="dv">25</span> <span class="kw">as</span> age, <span class="dv">35000</span> <span class="kw">as</span> income, <span class="dv">1</span> <span class="kw">as</span> student</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- conditional logic using case statement</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">when</span> age <span class="op">&gt;=</span> <span class="dv">18</span> <span class="kw">and</span> age <span class="op">&lt;=</span> <span class="dv">30</span> <span class="kw">and</span> (income <span class="op">&lt;</span> <span class="dv">30000</span> <span class="kw">or</span> student <span class="op">=</span> <span class="dv">1</span>) <span class="cf">then</span> <span class="st">'financial support applicable'</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">'financial support not applicable'</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span> <span class="kw">as</span> support_status</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">data</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">support_status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">financial support applicable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="the-switch-statement" class="level2">
 <h2 class="anchored" data-anchor-id="the-switch-statement">The <code>switch</code> statement</h2>
 <p>The switch statement is especially useful for getting values from a dictionary-like construct with key and value.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>get_height <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(x,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eiffel tower"</span> <span class="ot">=</span> <span class="dv">330</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Burj Khalifa"</span> <span class="ot">=</span> <span class="dv">828</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Shanghai Tower"</span> <span class="ot">=</span> <span class="dv">632</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"not found"</span>) <span class="co"># always include a "not found" for debugging purposes</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_height</span>(<span class="st">"Shanghai Tower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>get_height <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(x,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eiffel tower"</span> <span class="ot">=</span> <span class="dv">330</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Burj Khalifa"</span> <span class="ot">=</span> <span class="dv">828</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Shanghai Tower"</span> <span class="ot">=</span> <span class="dv">632</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"not found"</span>) <span class="co"># always include a "not found" for debugging purposes</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_height</span>(<span class="st">"Shanghai Tower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 632</code></pre>
 </div>
