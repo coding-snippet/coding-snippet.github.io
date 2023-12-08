@@ -15,7 +15,50 @@ suppliers = r.suppliers
 ```
 
 ## Functional programming
-Following the DRY principle (don't repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called `arguments`, while to actual logic performed by the function happens in the `body`.
+Following the DRY principle (don't repeat yourself), functional programming allows the coder to reuse certain chunks of code. The input values are called `arguments`, while to actual logic performed by the function happens in the `body`. Functions also create a local `environment`.
+
+### Language specific considerations
+
+:::{.panel-tabset}
+
+## R
+
+### Types
+There are 4 types of functions in R. 
+
+### Watch out for local environments!
+```{r}
+a = "start_a"
+b = "start_b"
+
+do_sth <- function() {
+  a = 1
+  b = 2
+  print(paste(a,b))
+}
+
+do_sth_else <- function() {
+  a = 1
+  print(paste(a,b))
+}
+
+do_sth()
+do_sth_else()
+print(paste(a, b))
+```
+### Tricks
+Functions can be grouped by adding them to a list.
+```{r}
+fun <- list(
+  dog = function() print("bark"),
+  cat = function() print("meow"),
+  fox = function() print("What does the fox say?")
+)
+
+fun$fox()
+```
+
+:::
 
 :::{.panel-tabset}
 

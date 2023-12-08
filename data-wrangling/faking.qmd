@@ -6,6 +6,21 @@ order: 3
 ```{r, setup, include=FALSE}
 source("setup.R")
 ```
+
+## Generaring a uniform distribution
+
+:::{.panel-tabset}
+
+## R
+```{r}
+x = runif(n = 1000, min = 0, max = 200)
+boxplot(x)
+```
+
+:::
+
+## Faking data for a database
+
 Faking data is very useful for populating test databases. In fact, the script below was used to generate the example data with the tables `customers`, `orders`, `suppliers` and `products` used on this website.
 
 ::: {.panel-tabset}
