@@ -4,6 +4,16 @@ title: "Filtering dataframes"
 ```{r, setup, include=FALSE}
 source("setup.R")
 ```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
 Filtering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling.
 
 ## Filter by "is equal to" 
@@ -12,26 +22,55 @@ The most basic form of filtering is by comparing a search term with the values o
 ::: {.panel-tabset}
 ## Python
 
+### The bracket notation
+The first method is the classic syntax with the square brackets. Even though this method seems to be a bit from last century, it is the preferred method of many coders. 
 ```{python}
-z = 4
-if z % 2 == 0:  # True
-    print("z is even")
+import pandas as pd
+
+filtered_df = customers[customers.customer_name == 'Anthony Guerra']
+filtered_df
+```
+
+### The `query` notation
+Pandas offers a nice function that enables you to write queries in the following way:
+```{python}
+import pandas as pd
+
+filtered_df = customers.query('customer_name == "Anthony Guerra"')
+filtered_df
+```
+### The `loc` function
+Provides the ability to filter dataframes by index names: df[row_name or filter,"column_name"].
+```{python}
+import pandas as pd
+
+filtered_df = customers.loc[customers.customer_name == "Anthony Guerra",] # comma not necessary
+filtered_df
+```
+### The `iloc` function
+Provides the ability to filter dataframes by index: df[from:to,from:to].
+```{python}
+import pandas as pd
+
+filtered_df = customers.iloc[20:25,2:4]
+filtered_df
 ```
 
 ## R
-in one line
+
+### The bracket notation
+The first method is the classic syntax with the square brackets. Even though this method seems to be a bit from last century, it is the preferred method of many coders. 
 ```{r}
-z = 4
-if (z %% 2 == 0) print("z is even")
+filtered_df = customers[customers$customer_name == 'Anthony Guerra',] # comma is necessary!
+filtered_df
 ```
 
-in several lines
+### The dplyr method
 ```{r}
-z = 5
-if (z %% 2 != 0) {
-  print("z is not even")
-}
+filtered_df <- customers %>% filter(customer_name == "Anthony Guerra")
+filtered_df
 ```
+
 
 ## SQL
 

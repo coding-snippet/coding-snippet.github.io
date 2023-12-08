@@ -269,43 +269,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">SQL</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="the-bracket-notation" class="level3">
+<h3 class="anchored" data-anchor-id="the-bracket-notation">The bracket notation</h3>
+<p>The first method is the classic syntax with the square brackets. Even though this method seems to be a bit from last century, it is the preferred method of many coders.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> z <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># True</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"z is even"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> customers[customers.customer_name <span class="op">==</span> <span class="st">'Anthony Guerra'</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>z is even</code></pre>
+<pre><code>                            customer_id  ...                                            address
+0  8ab2552b-e4c9-471d-bdf1-ff6e225860e1  ...  963 Regina Bridge Apt. 279\nPort Richard, NJ 4...
+
+[1 rows x 5 columns]</code></pre>
 </div>
 </div>
+</section>
+<section id="the-query-notation" class="level3">
+<h3 class="anchored" data-anchor-id="the-query-notation">The <code>query</code> notation</h3>
+<p>Pandas offers a nice function that enables you to write queries in the following way:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> customers.query(<span class="st">'customer_name == "Anthony Guerra"'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            customer_id  ...                                            address
+0  8ab2552b-e4c9-471d-bdf1-ff6e225860e1  ...  963 Regina Bridge Apt. 279\nPort Richard, NJ 4...
+
+[1 rows x 5 columns]</code></pre>
+</div>
+</div>
+</section>
+<section id="the-loc-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-loc-function">The <code>loc</code> function</h3>
+<p>Provides the ability to filter dataframes by index names: df[row_name or filter,“column_name”].</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> customers.loc[customers.customer_name <span class="op">==</span> <span class="st">"Anthony Guerra"</span>,] <span class="co"># comma not necessary</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            customer_id  ...                                            address
+0  8ab2552b-e4c9-471d-bdf1-ff6e225860e1  ...  963 Regina Bridge Apt. 279\nPort Richard, NJ 4...
+
+[1 rows x 5 columns]</code></pre>
+</div>
+</div>
+</section>
+<section id="the-iloc-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-iloc-function">The <code>iloc</code> function</h3>
+<p>Provides the ability to filter dataframes by index: df[from:to,from:to].</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> customers.iloc[<span class="dv">20</span>:<span class="dv">25</span>,<span class="dv">2</span>:<span class="dv">4</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        email         phone_number
+20      jeffrey71@example.com     001-582-898-9180
+21       jandrews@example.com  (652)154-8443x09491
+22        robin69@example.com           9724123889
+23         mary10@example.com           8598893292
+24  gonzaleznorma@example.org        (278)903-9109</code></pre>
+</div>
+</div>
+</section>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>in one line</p>
+<section id="the-bracket-notation-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-bracket-notation-1">The bracket notation</h3>
+<p>The first method is the classic syntax with the square brackets. Even though this method seems to be a bit from last century, it is the preferred method of many coders.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (z <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">print</span>(<span class="st">"z is even"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">=</span> customers[customers<span class="sc">$</span>customer_name <span class="sc">==</span> <span class="st">'Anthony Guerra'</span>,] <span class="co"># comma is necessary!</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "z is even"</code></pre>
+<pre><code># A tibble: 1 × 5
+  customer_id                          customer_name  email phone_number address
+  &lt;chr&gt;                                &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  
+1 8ab2552b-e4c9-471d-bdf1-ff6e225860e1 Anthony Guerra jane… 659.461.7580 "963 R…</code></pre>
 </div>
 </div>
-<p>in several lines</p>
+</section>
+<section id="the-dplyr-method" class="level3">
+<h3 class="anchored" data-anchor-id="the-dplyr-method">The dplyr method</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (z <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"z is not even"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="ot">&lt;-</span> customers <span class="sc">%&gt;%</span> <span class="fu">filter</span>(customer_name <span class="sc">==</span> <span class="st">"Anthony Guerra"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>filtered_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "z is not even"</code></pre>
+<pre><code># A tibble: 1 × 5
+  customer_id                          customer_name  email phone_number address
+  &lt;chr&gt;                                &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  
+1 8ab2552b-e4c9-471d-bdf1-ff6e225860e1 Anthony Guerra jane… 659.461.7580 "963 R…</code></pre>
 </div>
 </div>
+</section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  customers</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> <span class="dv">0</span><span class="op">=</span><span class="dv">0</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> customer_name <span class="op">=</span> <span class="st">'Anthony Guerra'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  customers</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> <span class="dv">0</span><span class="op">=</span><span class="dv">0</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> customer_name <span class="op">=</span> <span class="st">'Anthony Guerra'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
 <caption>1 records</caption>

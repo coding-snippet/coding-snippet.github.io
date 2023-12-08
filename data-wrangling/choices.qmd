@@ -146,6 +146,7 @@ A classic task in data cleaning is changing the values of a column in a df to a 
 ```{python}
 #| eval: false
 import pandas as pd
+
 df = orders[['quantity']].copy()
 df['order_size'] = df['quantity'].apply(lambda x: 'large' if x >= 3 else 'small')
 df = df.iloc[0:5]
