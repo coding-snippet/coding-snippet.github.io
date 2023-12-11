@@ -1,0 +1,51 @@
+---
+title: "Altering"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
+## Move columns 
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+
+# Assuming customers is your DataFrame
+df_reordered = customers[['customer_name'] + list(customers.columns.drop('customer_name'))]
+df_reordered
+```
+
+## R
+
+```{r}
+
+df_reordered = customers %>% 
+  select(customer_name, everything()) # move name to beginning
+df_reordered
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+SELECT
+  customer_name, -- just choose the order in the select statement
+  customer_id,
+  email,
+  phone_number
+FROM 
+  customers;
+```
+:::

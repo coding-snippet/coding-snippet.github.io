@@ -21,7 +21,11 @@ website:
               - data-wrangling/loops.qmd
           - section: "Data frames"
             contents:
+              - data-wrangling/reading_data.qmd
               - data-wrangling/filtering.qmd
+              - data-wrangling/joins.qmd
+              - data-wrangling/altering.qmd
+              - data-wrangling/exporting_data.qmd
           - data-wrangling/faking.qmd
       - section: "Coding styles"
         contents:

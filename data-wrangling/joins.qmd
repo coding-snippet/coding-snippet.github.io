@@ -1,0 +1,60 @@
+---
+title: "Joining"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
+## Left Join
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+
+result = pd.merge(orders, products, on="product_id", how="left")
+result = pd.merge(result, customers, on="customer_id", how="left")
+result["tot_price"] = result["price"] * result["quantity"]
+result = result[["customer_name", "product_name", "quantity", "price", "tot_price"]]
+
+print(result)
+
+```
+
+## R
+
+```{r}
+result <- orders %>%
+  left_join(products, by = c("product_id" = "product_id")) %>% 
+  left_join(customers, by = c("customer_id" = "customer_id")) %>%
+  mutate(tot_price = price*quantity) %>% 
+  select(customer_name, product_name, quantity, price, tot_price)
+  
+result
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+select 
+    customers.customer_name, 
+    products.product_name, 
+    orders.quantity, 
+    products.price, 
+    products.price * orders.quantity as tot_price
+from orders
+left join products on orders.product_id = products.product_id
+left join customers on orders.customer_id = customers.customer_id;
+```
+:::

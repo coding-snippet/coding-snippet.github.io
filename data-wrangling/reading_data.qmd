@@ -1,0 +1,35 @@
+---
+title: "Importing data"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+Reading in data from various sources is one of the key skills to get a day of data wrangling started. There are tons of vanilla functions as well as cool packages to do the job.
+
+## Excel files and CSVs
+Excel/CSVs are a very handy format to transport (relatively) small amounts of data between stakeholders.
+
+::: {.panel-tabset}
+
+## Python
+```{python}
+#| eval: false
+
+import pandas as pd
+df = pd.read_excel("path.xlsx", sheet_name="Sheet1") # for Excels
+df = pd.read_csv("path.csv") # for comma separated
+df = pd.read_csv("path.csv", sep=';') # for semicolon separated
+```
+
+## R
+```{r}
+#| eval: false
+
+df <- read_excel("path", sheet = "Sheet1") # readxl package
+df <- read.csv("path") # comma separated
+df <- read.csv2("path") # semicolon separated
+
+```
+
+:::

@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data wrangling</li><li class="breadcrumb-item"><a href="../data-wrangling/filtering.html">Data frames</a></li><li class="breadcrumb-item"><a href="../data-wrangling/filtering.html">Filtering dataframes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data wrangling</li><li class="breadcrumb-item"><a href="../data-wrangling/reading_data.html">Data frames</a></li><li class="breadcrumb-item"><a href="../data-wrangling/filtering.html">Filtering dataframes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,8 +196,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../data-wrangling/reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../data-wrangling/filtering.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Filtering dataframes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-wrangling/joins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joining</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-wrangling/altering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Altering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-wrangling/exporting_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exporting data</span></a>
   </div>
 </li>
       </ul>
@@ -238,6 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#filter-by-is-equal-to" id="toc-filter-by-is-equal-to" class="nav-link active" data-scroll-target="#filter-by-is-equal-to">Filter by “is equal to”</a></li>
+  <li><a href="#filter-by-is-empty" id="toc-filter-by-is-empty" class="nav-link" data-scroll-target="#filter-by-is-empty">Filter by “is empty”</a></li>
   </ul>
 </nav>
     </div>
@@ -411,6 +436,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-by-is-empty" class="level2">
+<h2 class="anchored" data-anchor-id="filter-by-is-empty">Filter by “is empty”</h2>
+<p>Be honest, everyone hates empty values. However, we still have to deal with them!</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<section id="drop-rows-where-column-value-is-empty" class="level3">
+<h3 class="anchored" data-anchor-id="drop-rows-where-column-value-is-empty">Drop rows where column value is “empty”</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="drop-rows-where-whole-row-is-empty" class="level3">
+<h3 class="anchored" data-anchor-id="drop-rows-where-whole-row-is-empty">Drop rows where whole row is “empty”</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df.dropna(how<span class="op">=</span><span class="st">'all'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<section id="drop-rows-where-column-value-is-empty-1" class="level3">
+<h3 class="anchored" data-anchor-id="drop-rows-where-column-value-is-empty-1">Drop rows where column value is “empty”</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="drop-rows-where-whole-row-is-empty-1" class="level3">
+<h3 class="anchored" data-anchor-id="drop-rows-where-whole-row-is-empty-1">Drop rows where whole row is “empty”</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </div>
 </div>
 </div>

@@ -1,0 +1,31 @@
+---
+title: "Exporting data"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+## Excel files and CSVs
+Excel/CSVs are a very handy format to transport (relatively) small amounts of data between stakeholders.
+
+::: {.panel-tabset}
+
+## Python
+```{python}
+#| eval: false
+#add code here
+```
+
+## R
+```{r}
+#| eval: false
+library(openxlsx)
+wb <- createWorkbook()
+sheet <- addWorksheet(wb, sheetName = "my_sheet_name")
+writeData(wb, sheet, df, startCol = 1, startRow = 1)
+saveWorkbook(wb,
+             file = "path.xlsx",
+             overwrite = TRUE)
+```
+
+:::

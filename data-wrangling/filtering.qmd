@@ -84,3 +84,38 @@ where 0=0
   and customer_name = 'Anthony Guerra';
 ```
 :::
+
+## Filter by "is empty" 
+Be honest, everyone hates empty values. However, we still have to deal with them!
+
+::: {.panel-tabset}
+
+## Python
+
+### Drop rows where column value is "empty"
+```{python}
+# add code here
+```
+
+### Drop rows where whole row is "empty"
+```{python}
+#| eval: false
+
+df_filtered = df.dropna(how='all', inplace=True)
+```
+
+## R
+
+### Drop rows where column value is "empty"
+```{r}
+# add code here
+```
+
+### Drop rows where whole row is "empty"
+```{r}
+# add code here
+```
+
+
+
+:::
