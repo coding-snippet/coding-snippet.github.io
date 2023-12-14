@@ -99,17 +99,17 @@ get_product_quantity("field")
 ```
 
 
-## Bash
-```{bash}
-#!/bin/bash
+<!-- ## Bash -->
+<!-- ```{bash} -->
+<!-- #!/bin/bash -->
 
-greet() {
-    local name=$1
-    local message=$2
-    echo "Hello, $name! $message"
-}
+<!-- greet() { -->
+<!--     local name=$1 -->
+<!--     local message=$2 -->
+<!--     echo "Hello, $name! $message" -->
+<!-- } -->
 
-greet "Alice" "Hope you're having a great day!"
-```
+<!-- greet "Alice" "Hope you're having a great day!" -->
+<!-- ``` -->
 
 :::

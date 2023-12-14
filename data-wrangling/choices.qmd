@@ -49,18 +49,19 @@ from
 limit 5;
 ```
 
-## Bash
-```{bash}
-#!/bin/bash
+<!-- ## Bash -->
+<!-- ```{bash} -->
+<!-- #| eval: false -->
+<!-- #!/bin/bash -->
 
-z=4
+<!-- z=4 -->
 
-if [ $((z % 2)) -eq 0 ]; then
-    echo "z is even"
-else
-    echo "z is odd"
-fi
-```
+<!-- if [ $((z % 2)) -eq 0 ]; then -->
+<!--     echo "z is even" -->
+<!-- else -->
+<!--     echo "z is odd" -->
+<!-- fi -->
+<!-- ``` -->
 :::
 
 ## The `elif` statement
