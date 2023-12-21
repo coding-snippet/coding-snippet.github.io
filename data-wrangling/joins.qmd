@@ -32,7 +32,7 @@ print(result)
 ```
 
 ## R
-
+### By one column
 ```{r}
 result <- orders %>%
   left_join(products, by = c("product_id" = "product_id")) %>% 
@@ -42,7 +42,12 @@ result <- orders %>%
   
 result
 ```
+### by multiple columns
+```{r}
+#| eval: false
 
+df_joined <- df1 %>% left_join(df2, by=c('x1'='x2', 'y1'='y2'))
+```
 ## SQL
 
 ```{sql}

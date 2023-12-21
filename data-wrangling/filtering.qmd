@@ -92,30 +92,96 @@ Be honest, everyone hates empty values. However, we still have to deal with them
 
 ## Python
 
-### Drop rows where column value is "empty"
+### Drop rows where at least one column value is `NA`
 ```{python}
 # add code here
+import pandas as pd
+
+df = pd.DataFrame({
+    'A': [1, None, 3, None, None],
+    'B': [5, None, None, None, None],
+    'C': ['x', 'y', None, 'z', None]
+})
+
+filtered_df = df.dropna()
+print(filtered_df)
 ```
 
-### Drop rows where whole row is "empty"
+### Drop rows where whole row is `None`
 ```{python}
-#| eval: false
+import pandas as pd
 
-df_filtered = df.dropna(how='all', inplace=True)
+df = pd.DataFrame({
+    'A': [1, None, 3, None, None],
+    'B': [5, None, None, None, None],
+    'C': ['x', 'y', None, 'z', None]
+})
+
+filtered_df = df.dropna(how='all')
+print(filtered_df)
+
 ```
 
 ## R
 
-### Drop rows where column value is "empty"
+### Drop rows where at least one column value is `NA`
 ```{r}
-# add code here
+library(dplyr)
+library(tidyr)
+
+df <- data.frame(
+  A = c(1, NA, 3, NA, NA),
+  B = c(5, NA, NA, NA, NA),
+  C = c("x", "y", NA, "z", NA)
+)
+
+df %>% drop_na()
 ```
 
-### Drop rows where whole row is "empty"
+### Drop rows where whole row is `NA`
 ```{r}
-# add code here
+library(dplyr)
+library(tidyr)
+
+df <- data.frame(
+  A = c(1, NA, 3, NA, NA),
+  B = c(5, NA, NA, NA, NA),
+  C = c("x", "y", NA, "z", NA)
+)
+
+df %>% filter_all(any_vars(!is.na(.)))
+```
+## SQL
+
+### Drop rows where at least one column value is `NULL`
+
+```{sql}
+#| eval: false
+#| connection: con
+
+select
+  *
+from
+  schema.table
+where 0=0
+  and A is not null 
+  and B is not null 
+  and C is not null;
+
 ```
 
+### Drop rows where all column values are `NULL`
 
+```{sql}
+#| eval: false
+#| connection: con
+
+select
+  *
+from
+  schema.table
+where 0=0
+  coalesce(A, B, C) is not null;
+```
 
 :::
