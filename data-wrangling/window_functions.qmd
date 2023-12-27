@@ -1,0 +1,126 @@
+---
+title: "Window functions"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
+## Introduction
+For advanced queries, window functions are very useful to perform calculations based on partition, order and function in a set of rows. They allow to put the current row into context with other rows and perform tasks such as ranking, aggregating, and using analytic functions.
+
+## The Main Types of Window Functions
+- *Ranking Functions:* Assign e.g. a row number or a rank to a row based on defined criteria. Examples are `rank()`, `dense_rank()`, `row_number()` etc.
+- *Analytic Functions:* Operate on a range of rows around the current row. Examples are `lead()`, `lag()`, `first_value()`, `last_value()`, `nth_value`, `ntile()` etc.
+- *Aggregate Functions:* Aggregate values over the defined partition `avg()`, `sum()`, `count()`.
+
+As always, an example shows more than a thousand words:
+
+### Ranking Functions
+#### `rank()`, `dense_rank()` and `row_number()`
+At first glance, it may seem, that the ranking functions all produce the same results. When taking a closer look we notice, that there are slight differences. The `row_number()` will assign a unique value to each row in the window, whereas `rank()` will assign the same value for the same criteria; e.g. in the example below, if there were two values of `total_cost` that were exactly the same within the window, the rank function would assign the same value (e.g. both `2`) and then skip one value (i.e. skip `3` and proceed with `4`). The `dense_rank()` is like the rank but without skipping the preceding value.
+
+::: {.panel-tabset}
+
+## SQL
+
+```{sql}
+#| connection: con
+
+with sales as (
+  select
+    c.customer_name  
+    , p.product_name
+    , p.price
+    , o.quantity
+    , p.price * o.quantity as total_cost
+    , order_date
+    , strftime('%Y', order_date) || '-' || strftime('%W', order_date) as yyyy_ww
+  from 
+    orders as o
+  inner join products as p on
+    p.product_id = o.product_id
+  inner join customers as c on
+   c.customer_id = o.customer_id
+)
+
+select
+  *
+  , row_number() over(partition by yyyy_ww order by price desc) as rn_most_expensive_product
+  , rank() over(partition by yyyy_ww order by price desc) as rk_most_expensive_product
+  , dense_rank() over(partition by yyyy_ww order by price desc) as drk_most_expensive_product
+from
+  sales
+order by
+  yyyy_ww asc, rn_most_expensive_product asc
+limit 15 offset 4;
+```
+## Python
+```{python}
+import pandas as pd
+
+merged_df = pd.merge(orders, products, how='inner', on='product_id')
+merged_df = pd.merge(merged_df, customers, how='inner', on='customer_id')
+
+# Calculating total_cost and yyyy_ww
+merged_df['total_cost'] = merged_df['price'] * merged_df['quantity']
+merged_df['yyyy_ww'] = merged_df['order_date'].dt.strftime('%Y-%W')
+
+merged_df['rn_most_expensive_product'] = merged_df.groupby('yyyy_ww')['price'].transform(lambda x: x.rank(method='first', ascending=False))
+merged_df['rk_most_expensive_product'] = merged_df.groupby('yyyy_ww')['price'].rank(method='min', ascending=False)
+merged_df['drk_most_expensive_product'] = merged_df.groupby('yyyy_ww')['price'].rank(method='dense', ascending=False)
+
+# Selecting specific columns
+selected_columns = [
+    'customer_name', 'product_name', 'price', 'quantity', 'order_date',
+    'rn_most_expensive_product', 'rk_most_expensive_product', 'drk_most_expensive_product'
+]
+
+result_df = merged_df.sort_values(by=['yyyy_ww', 'rn_most_expensive_product']).head(15)[selected_columns].iloc[4:15]
+
+print(result_df)
+
+
+```
+## R
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+sales <- orders %>%
+  inner_join(products, by = "product_id") %>%
+  inner_join(customers, by = "customer_id") %>%
+  mutate(
+    total_cost = price * quantity,
+    yyyy_ww = paste0(strftime(order_date, "%Y"), "-", strftime(order_date, "%W"))
+  )
+
+sales <- sales %>%
+  arrange(yyyy_ww, desc(price)) %>%
+  group_by(yyyy_ww) %>%
+  mutate(
+    rn_most_expensive_product = row_number(desc(price)),
+    rk_most_expensive_product = rank(desc(price)),
+    drk_most_expensive_product = dense_rank(desc(price))
+  ) %>%
+  ungroup() %>% # dplyr uses the ungroup() as pendant to window functions
+  select( rn_most_expensive_product, rk_most_expensive_product,
+          drk_most_expensive_product, customer_name, product_name,
+          price, quantity, order_date,
+  ) %>%
+  slice(5:15)
+sales
+
+```
+
+:::

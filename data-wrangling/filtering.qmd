@@ -1,5 +1,5 @@
 ---
-title: "Filtering dataframes"
+title: "Filtering"
 ---
 ```{r, setup, include=FALSE}
 source("setup.R")

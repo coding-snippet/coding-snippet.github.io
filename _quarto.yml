@@ -24,6 +24,7 @@ website:
               - data-wrangling/reading_data.qmd
               - data-wrangling/filtering.qmd
               - data-wrangling/joins.qmd
+              - data-wrangling/window_functions.qmd
               - data-wrangling/altering.qmd
               - data-wrangling/exporting_data.qmd
           - data-wrangling/faking.qmd
