@@ -267,11 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-main-types-of-window-functions" id="toc-the-main-types-of-window-functions" class="nav-link" data-scroll-target="#the-main-types-of-window-functions">The Main Types of Window Functions</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#ranking-functions" id="toc-ranking-functions" class="nav-link" data-scroll-target="#ranking-functions">Ranking Functions</a></li>
+  <li><a href="#the-main-types-of-window-functions" id="toc-the-main-types-of-window-functions" class="nav-link" data-scroll-target="#the-main-types-of-window-functions">The Main Types of Window Functions</a></li>
   </ul></li>
+  <li><a href="#ranking-functions" id="toc-ranking-functions" class="nav-link" data-scroll-target="#ranking-functions">Ranking Functions</a></li>
+  <li><a href="#aggregating-functions" id="toc-aggregating-functions" class="nav-link" data-scroll-target="#aggregating-functions">Aggregating Functions</a></li>
   </ul>
 </nav>
     </div>
@@ -298,20 +299,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>For advanced queries, window functions are very useful to perform calculations based on partition, order and function in a set of rows. They allow to put the current row into context with other rows and perform tasks such as ranking, aggregating, and using analytic functions.</p>
-</section>
-<section id="the-main-types-of-window-functions" class="level2">
-<h2 class="anchored" data-anchor-id="the-main-types-of-window-functions">The Main Types of Window Functions</h2>
+<section id="the-main-types-of-window-functions" class="level3">
+<h3 class="anchored" data-anchor-id="the-main-types-of-window-functions">The Main Types of Window Functions</h3>
 <ul>
-<li><em>Ranking Functions:</em> Assign e.g.&nbsp;a row number or a rank to a row based on defined criteria. Examples are <code>rank()</code>, <code>dense_rank()</code>, <code>row_number()</code> etc.</li>
-<li><em>Analytic Functions:</em> Operate on a range of rows around the current row. Examples are <code>lead()</code>, <code>lag()</code>, <code>first_value()</code>, <code>last_value()</code>, <code>nth_value</code>, <code>ntile()</code> etc.</li>
-<li><em>Aggregate Functions:</em> Aggregate values over the defined partition <code>avg()</code>, <code>sum()</code>, <code>count()</code>.</li>
+<li><em>Ranking Functions:</em> Assign e.g.&nbsp;a row number or a rank to a row based on defined criteria. Examples are <code>rank</code>, <code>dense_rank</code>, <code>row_number</code> etc.</li>
+<li><em>Aggregate Functions:</em> Aggregate values over the defined partition <code>avg</code>, <code>sum</code>, <code>count</code>.</li>
+<li><em>Analytic Functions:</em> Operate on a range of rows around the current row. Examples are <code>lead</code>, <code>lag</code>, <code>first_value</code>, <code>last_value</code>, <code>nth_value</code>, <code>ntile</code> etc.</li>
 </ul>
-<p>As always, an example shows more than a thousand words:</p>
-<section id="ranking-functions" class="level3">
-<h3 class="anchored" data-anchor-id="ranking-functions">Ranking Functions</h3>
-<section id="rank-dense_rank-and-row_number" class="level4">
-<h4 class="anchored" data-anchor-id="rank-dense_rank-and-row_number"><code>rank()</code>, <code>dense_rank()</code> and <code>row_number()</code></h4>
-<p>At first glance, it may seem, that the ranking functions all produce the same results. When taking a closer look we notice, that there are slight differences. The <code>row_number()</code> will assign a unique value to each row in the window, whereas <code>rank()</code> will assign the same value for the same criteria; e.g.&nbsp;in the example below, if there were two values of <code>total_cost</code> that were exactly the same within the window, the rank function would assign the same value (e.g.&nbsp;both <code>2</code>) and then skip one value (i.e.&nbsp;skip <code>3</code> and proceed with <code>4</code>). The <code>dense_rank()</code> is like the rank but without skipping the preceding value.</p>
+<p>As always, an example says more than a thousand words:</p>
+</section>
+</section>
+<section id="ranking-functions" class="level2">
+<h2 class="anchored" data-anchor-id="ranking-functions">Ranking Functions</h2>
+<p>At first glance, it may seem, that the ranking functions all produce the same results. When taking a closer look we notice, that there are slight differences. The <code>row_number</code> will assign a unique value to each row in the window, whereas <code>rank</code> will assign the same value for the same criteria; as in the example below, if there were two values of <code>total_cost</code> that were exactly the same within the window, the rank function would assign the same value (e.g.&nbsp;both <code>2</code>) and then skip one value (i.e.&nbsp;skip <code>3</code> and proceed with <code>4</code>). The <code>dense_rank</code> is like the rank but without skipping the preceding value.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">SQL</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">R</a></li></ul>
 <div class="tab-content">
@@ -326,38 +326,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    , p.price <span class="op">*</span> o.quantity <span class="kw">as</span> total_cost</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    , order_date</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    , strftime(<span class="st">'%Y'</span>, order_date) <span class="op">||</span> <span class="st">'-'</span> <span class="op">||</span> strftime(<span class="st">'%W'</span>, order_date) <span class="kw">as</span> yyyy_ww</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">from</span> </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    orders <span class="kw">as</span> o</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> products <span class="kw">as</span> p <span class="kw">on</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    p.product_id <span class="op">=</span> o.product_id</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> customers <span class="kw">as</span> c <span class="kw">on</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   c.customer_id <span class="op">=</span> o.customer_id</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">row_number</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> rn_most_expensive_product</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">rank</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> rk_most_expensive_product</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">dense_rank</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> drk_most_expensive_product</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  sales</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  yyyy_ww <span class="kw">asc</span>, rn_most_expensive_product <span class="kw">asc</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">15</span> offset <span class="dv">4</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">from</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    orders <span class="kw">as</span> o</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> products <span class="kw">as</span> p <span class="kw">on</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    p.product_id <span class="op">=</span> o.product_id</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> customers <span class="kw">as</span> c <span class="kw">on</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   c.customer_id <span class="op">=</span> o.customer_id</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">row_number</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> rn</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">rank</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> <span class="fu">rank</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">dense_rank</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> yyyy_ww <span class="kw">order</span> <span class="kw">by</span> price <span class="kw">desc</span>) <span class="kw">as</span> <span class="fu">dense_rank</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  sales</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  yyyy_ww <span class="kw">asc</span>, rn <span class="kw">asc</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">15</span> offset <span class="dv">4</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="knitsql-table">
 <table class="table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
 <colgroup>
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 11%">
 <col style="width: 11%">
 <col style="width: 8%">
-<col style="width: 4%">
+<col style="width: 3%">
 <col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 17%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -368,9 +369,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: right;">total_cost</th>
 <th style="text-align: left;">order_date</th>
 <th style="text-align: left;">yyyy_ww</th>
-<th style="text-align: right;">rn_most_expensive_product</th>
-<th style="text-align: right;">rk_most_expensive_product</th>
-<th style="text-align: right;">drk_most_expensive_product</th>
+<th style="text-align: right;">rn</th>
+<th style="text-align: right;">rank</th>
+<th style="text-align: right;">dense_rank</th>
 </tr>
 </thead>
 <tbody>
@@ -510,32 +511,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'total_cost'</span>] <span class="op">=</span> merged_df[<span class="st">'price'</span>] <span class="op">*</span> merged_df[<span class="st">'quantity'</span>]</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'yyyy_ww'</span>] <span class="op">=</span> merged_df[<span class="st">'order_date'</span>].dt.strftime(<span class="st">'%Y-%W'</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'rn_most_expensive_product'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].transform(<span class="kw">lambda</span> x: x.rank(method<span class="op">=</span><span class="st">'first'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'rk_most_expensive_product'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].rank(method<span class="op">=</span><span class="st">'min'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'drk_most_expensive_product'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].rank(method<span class="op">=</span><span class="st">'dense'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'rn'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].transform(<span class="kw">lambda</span> x: x.rank(method<span class="op">=</span><span class="st">'first'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'rank'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].rank(method<span class="op">=</span><span class="st">'min'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'dense_rank'</span>] <span class="op">=</span> merged_df.groupby(<span class="st">'yyyy_ww'</span>)[<span class="st">'price'</span>].rank(method<span class="op">=</span><span class="st">'dense'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting specific columns</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'customer_name'</span>, <span class="st">'product_name'</span>, <span class="st">'price'</span>, <span class="st">'quantity'</span>, <span class="st">'order_date'</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rn_most_expensive_product'</span>, <span class="st">'rk_most_expensive_product'</span>, <span class="st">'drk_most_expensive_product'</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rn'</span>, <span class="st">'rank'</span>, <span class="st">'dense_rank'</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>result_df <span class="op">=</span> merged_df.sort_values(by<span class="op">=</span>[<span class="st">'yyyy_ww'</span>, <span class="st">'rn_most_expensive_product'</span>]).head(<span class="dv">15</span>)[selected_columns].iloc[<span class="dv">4</span>:<span class="dv">15</span>]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>result_df <span class="op">=</span> merged_df.sort_values(by<span class="op">=</span>[<span class="st">'yyyy_ww'</span>, <span class="st">'rn'</span>]).head(<span class="dv">15</span>)[selected_columns].iloc[<span class="dv">4</span>:<span class="dv">15</span>]</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         customer_name  ... drk_most_expensive_product
-191     Christine Holt  ...                        3.0
-94          Jodi Brown  ...                        4.0
-336    Danny Rodriguez  ...                        5.0
-474         Eric Davis  ...                        6.0
-398  Robert Strickland  ...                        7.0
-105       Terry Morgan  ...                        1.0
-159      Sarah Kennedy  ...                        1.0
-331   Brittany Johnson  ...                        1.0
-416     Amanda Johnson  ...                        2.0
-401  Robert Strickland  ...                        3.0
-344       Aaron Miller  ...                        4.0
+<pre><code>         customer_name product_name   price  ...   rn rank  dense_rank
+191     Christine Holt          act  422.40  ...  3.0  3.0         3.0
+94          Jodi Brown        teach  245.39  ...  4.0  4.0         4.0
+336    Danny Rodriguez        drive  162.04  ...  5.0  5.0         5.0
+474         Eric Davis       recent  135.03  ...  6.0  6.0         6.0
+398  Robert Strickland           we  119.74  ...  7.0  7.0         7.0
+105       Terry Morgan        there  912.52  ...  1.0  1.0         1.0
+159      Sarah Kennedy        there  912.52  ...  2.0  1.0         1.0
+331   Brittany Johnson        there  912.52  ...  3.0  1.0         1.0
+416     Amanda Johnson         able  730.41  ...  4.0  4.0         2.0
+401  Robert Strickland       travel  666.50  ...  5.0  5.0         3.0
+344       Aaron Miller         must  657.16  ...  6.0  6.0         4.0
 
 [11 rows x 8 columns]</code></pre>
 </div>
@@ -558,33 +559,310 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(yyyy_ww, <span class="fu">desc</span>(price)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(yyyy_ww) <span class="sc">%&gt;%</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">rn_most_expensive_product =</span> <span class="fu">row_number</span>(<span class="fu">desc</span>(price)),</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">rk_most_expensive_product =</span> <span class="fu">rank</span>(<span class="fu">desc</span>(price)),</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">drk_most_expensive_product =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(price))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">rn =</span> <span class="fu">row_number</span>(<span class="fu">desc</span>(price)),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> <span class="fu">rank</span>(<span class="fu">desc</span>(price)),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">dense_rank =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(price))</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="co"># dplyr uses the ungroup() as pendant to window functions</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( rn_most_expensive_product, rk_most_expensive_product,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>          drk_most_expensive_product, customer_name, product_name,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>          price, quantity, order_date,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">15</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( rn, rank, dense_rank, customer_name, product_name,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>          price, quantity, order_date,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">15</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 8
-   rn_most_expensi… rk_most_expensi… drk_most_expens… customer_name product_name
-              &lt;int&gt;            &lt;dbl&gt;            &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;       
- 1                3                3                3 Christine Ho… act         
- 2                4                4                4 Jodi Brown    teach       
- 3                5                5                5 Danny Rodrig… drive       
- 4                6                6                6 Eric Davis    recent      
- 5                7                7                7 Robert Stric… we          
- 6                1                2                1 Brittany Joh… there       
- 7                2                2                1 Sarah Kennedy there       
- 8                3                2                1 Terry Morgan  there       
- 9                4                4                2 Amanda Johns… able        
-10                5                5                3 Robert Stric… travel      
-11                6                6                4 Aaron Miller  must        
-# … with 3 more variables: price &lt;dbl&gt;, quantity &lt;dbl&gt;, order_date &lt;dttm&gt;</code></pre>
+      rn  rank dense_rank customer_name     product_name price quantity
+   &lt;int&gt; &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+ 1     3     3          3 Christine Holt    act           422.        3
+ 2     4     4          4 Jodi Brown        teach         245.        3
+ 3     5     5          5 Danny Rodriguez   drive         162.        4
+ 4     6     6          6 Eric Davis        recent        135.        1
+ 5     7     7          7 Robert Strickland we            120.        1
+ 6     1     2          1 Brittany Johnson  there         913.        1
+ 7     2     2          1 Sarah Kennedy     there         913.        4
+ 8     3     2          1 Terry Morgan      there         913.        4
+ 9     4     4          2 Amanda Johnson    able          730.        3
+10     5     5          3 Robert Strickland travel        666.        2
+11     6     6          4 Aaron Miller      must          657.        5
+# … with 1 more variable: order_date &lt;dttm&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="aggregating-functions" class="level2">
+<h2 class="anchored" data-anchor-id="aggregating-functions">Aggregating Functions</h2>
+<p>They are very useful to aggregate data on specified criteria using a window. The window can be aggregated using the partition clause and ordered by the order clause. Finally, a window can be set using <code>rows between X preceding and Y following</code> with X and Y being integers or unbounded, if we want the window to start from start to the end. It is also possible to set a range instead of rows</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">SQL</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">with</span> sales <span class="kw">as</span> (</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">select</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    c.customer_id</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    , p.product_name</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    , p.price</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    , o.quantity</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    , p.price <span class="op">*</span> o.quantity <span class="kw">as</span> total_cost</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    , order_date</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">from</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    orders <span class="kw">as</span> o</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> products <span class="kw">as</span> p <span class="kw">on</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    p.product_id <span class="op">=</span> o.product_id</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">inner</span> <span class="kw">join</span> customers <span class="kw">as</span> c <span class="kw">on</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    c.customer_id <span class="op">=</span> o.customer_id</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">avg</span>(total_cost) <span class="kw">over</span>(<span class="kw">order</span> <span class="kw">by</span> order_date <span class="kw">rows</span> <span class="kw">between</span> <span class="dv">1</span> <span class="kw">preceding</span> <span class="kw">and</span> <span class="dv">1</span> <span class="kw">following</span>) <span class="kw">as</span> avg_3_rows</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">sum</span>(total_cost) <span class="kw">over</span>(<span class="kw">order</span> <span class="kw">by</span> order_date <span class="kw">rows</span> <span class="kw">unbounded</span> <span class="kw">preceding</span>) <span class="kw">as</span> running_sum</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">count</span>() <span class="kw">over</span>(<span class="kw">partition</span> <span class="kw">by</span> customer_id) <span class="kw">as</span> orders_per_cust</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  sales</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  order_date</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">customer_id</th>
+<th style="text-align: left;">product_name</th>
+<th style="text-align: right;">price</th>
+<th style="text-align: right;">quantity</th>
+<th style="text-align: right;">total_cost</th>
+<th style="text-align: left;">order_date</th>
+<th style="text-align: right;">avg_3_rows</th>
+<th style="text-align: right;">running_sum</th>
+<th style="text-align: right;">orders_per_cust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0b18417b-543d-429c-a468-1592aea8c1a2</td>
+<td style="text-align: left;">conference</td>
+<td style="text-align: right;">572.67</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2290.68</td>
+<td style="text-align: left;">2023-01-01</td>
+<td style="text-align: right;">1539.9650</td>
+<td style="text-align: right;">2290.68</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0e683879-4049-4382-b977-965a06daa874</td>
+<td style="text-align: left;">author</td>
+<td style="text-align: right;">789.25</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">789.25</td>
+<td style="text-align: left;">2023-01-01</td>
+<td style="text-align: right;">1272.0333</td>
+<td style="text-align: right;">3079.93</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c9b595f2-b44b-4b02-ad87-1fba8404074d</td>
+<td style="text-align: left;">teach</td>
+<td style="text-align: right;">245.39</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">736.17</td>
+<td style="text-align: left;">2023-01-03</td>
+<td style="text-align: right;">1091.6067</td>
+<td style="text-align: right;">3816.10</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c9b595f2-b44b-4b02-ad87-1fba8404074d</td>
+<td style="text-align: left;">day</td>
+<td style="text-align: right;">874.70</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1749.40</td>
+<td style="text-align: left;">2023-01-04</td>
+<td style="text-align: right;">873.5333</td>
+<td style="text-align: right;">5565.50</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2c1823ce-2ca8-440f-8b47-d00873dd6e2c</td>
+<td style="text-align: left;">recent</td>
+<td style="text-align: right;">135.03</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">135.03</td>
+<td style="text-align: left;">2023-01-05</td>
+<td style="text-align: right;">1050.5433</td>
+<td style="text-align: right;">5700.53</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">e3c0eb04-ba9b-4fe5-89b2-d099e193d04d</td>
+<td style="text-align: left;">act</td>
+<td style="text-align: right;">422.40</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1267.20</td>
+<td style="text-align: left;">2023-01-05</td>
+<td style="text-align: right;">507.3233</td>
+<td style="text-align: right;">6967.73</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6680325a-df9b-407c-b3d1-0a19a96ca118</td>
+<td style="text-align: left;">we</td>
+<td style="text-align: right;">119.74</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">119.74</td>
+<td style="text-align: left;">2023-01-06</td>
+<td style="text-align: right;">678.3667</td>
+<td style="text-align: right;">7087.47</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b7887f71-9683-470a-8718-68c49cb4bb18</td>
+<td style="text-align: left;">drive</td>
+<td style="text-align: right;">162.04</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">648.16</td>
+<td style="text-align: left;">2023-01-06</td>
+<td style="text-align: right;">402.5133</td>
+<td style="text-align: right;">7735.63</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0e683879-4049-4382-b977-965a06daa874</td>
+<td style="text-align: left;">fast</td>
+<td style="text-align: right;">439.64</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">439.64</td>
+<td style="text-align: left;">2023-01-08</td>
+<td style="text-align: right;">806.9333</td>
+<td style="text-align: right;">8175.27</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6680325a-df9b-407c-b3d1-0a19a96ca118</td>
+<td style="text-align: left;">travel</td>
+<td style="text-align: right;">666.50</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1333.00</td>
+<td style="text-align: left;">2023-01-09</td>
+<td style="text-align: right;">1686.1467</td>
+<td style="text-align: right;">9508.27</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> pd.merge(orders, products, on<span class="op">=</span><span class="st">'product_id'</span>).merge(customers, on<span class="op">=</span><span class="st">'customer_id'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sales[<span class="st">'total_cost'</span>] <span class="op">=</span> sales[<span class="st">'price'</span>] <span class="op">*</span> sales[<span class="st">'quantity'</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> sales.sort_values(<span class="st">'order_date'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>sales[<span class="st">'avg_3_rows'</span>] <span class="op">=</span> sales[<span class="st">'total_cost'</span>].rolling(window<span class="op">=</span><span class="dv">3</span>, min_periods<span class="op">=</span><span class="dv">1</span>).mean()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sales[<span class="st">'running_sum'</span>] <span class="op">=</span> sales[<span class="st">'total_cost'</span>].cumsum()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>sales[<span class="st">'orders_per_cust'</span>] <span class="op">=</span> sales.groupby(<span class="st">'customer_id'</span>)[<span class="st">'customer_id'</span>].transform(<span class="st">'count'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> sales[[<span class="st">'customer_id'</span>, <span class="st">'product_name'</span>, <span class="st">'price'</span>, <span class="st">'quantity'</span>, <span class="st">'total_cost'</span>, <span class="st">'order_date'</span>, <span class="st">'avg_3_rows'</span>, <span class="st">'running_sum'</span>, <span class="st">'orders_per_cust'</span>]]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.sort_values(<span class="st">'order_date'</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                              customer_id  ... orders_per_cust
+0    0b18417b-543d-429c-a468-1592aea8c1a2  ...               3
+1    0e683879-4049-4382-b977-965a06daa874  ...               2
+2    c9b595f2-b44b-4b02-ad87-1fba8404074d  ...               3
+3    c9b595f2-b44b-4b02-ad87-1fba8404074d  ...               3
+4    e3c0eb04-ba9b-4fe5-89b2-d099e193d04d  ...               2
+..                                    ...  ...             ...
+495  5b4e2a6e-dab7-415b-badb-1e4ef26155ac  ...               4
+496  96e4be4c-42a3-4f62-ba5d-46a022883c83  ...               1
+497  b0f2cebf-a461-4135-886a-10e97cc2dac6  ...               3
+498  fd6d1332-e821-4d2b-87e0-2dc1c7d734e7  ...               2
+499  0b6bc6fb-4e69-4fe0-8bd4-aee20da0116b  ...               1
+
+[500 rows x 9 columns]</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Note that the results around the first and last rows may differ compared to the sql junk, since the window functions are differently implemented in sql and R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.6     ✔ stringr 1.4.0
+✔ readr   2.1.0     ✔ forcats 0.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+✖ purrr::modify() masks renv::modify()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(slider)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> orders <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(products, <span class="at">by =</span> <span class="st">"product_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(customers, <span class="at">by =</span> <span class="st">"customer_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_cost =</span> price <span class="sc">*</span> quantity) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    customer_id,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    product_name,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    price,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    quantity,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    total_cost,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    order_date</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> sales <span class="sc">%&gt;%</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(order_date) <span class="sc">%&gt;%</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_3_rows =</span> <span class="fu">slide_dbl</span>(total_cost, mean, <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.after =</span> <span class="dv">1</span>, <span class="at">.complete =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">running_sum =</span> <span class="fu">cumsum</span>(total_cost),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">orders_per_cust =</span> <span class="fu">n</span>()</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(customer_id) <span class="sc">%&gt;%</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">orders_per_cust =</span> <span class="fu">n</span>()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(order_date)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 500 × 9
+   customer_id        product_name price quantity total_cost order_date         
+   &lt;chr&gt;              &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;             
+ 1 0b18417b-543d-429… conference    573.        4      2291. 2023-01-01 00:00:00
+ 2 0e683879-4049-438… author        789.        1       789. 2023-01-01 00:00:00
+ 3 c9b595f2-b44b-4b0… teach         245.        3       736. 2023-01-03 00:00:00
+ 4 c9b595f2-b44b-4b0… day           875.        2      1749. 2023-01-04 00:00:00
+ 5 2c1823ce-2ca8-440… recent        135.        1       135. 2023-01-05 00:00:00
+ 6 e3c0eb04-ba9b-4fe… act           422.        3      1267. 2023-01-05 00:00:00
+ 7 6680325a-df9b-407… we            120.        1       120. 2023-01-06 00:00:00
+ 8 b7887f71-9683-470… drive         162.        4       648. 2023-01-06 00:00:00
+ 9 0e683879-4049-438… fast          440.        1       440. 2023-01-08 00:00:00
+10 e32da01f-81f0-4da… there         913.        1       913. 2023-01-09 00:00:00
+# … with 490 more rows, and 3 more variables: avg_3_rows &lt;dbl&gt;,
+#   running_sum &lt;dbl&gt;, orders_per_cust &lt;int&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -592,8 +870,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
