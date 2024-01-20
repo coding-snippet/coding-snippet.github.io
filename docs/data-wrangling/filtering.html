@@ -319,8 +319,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#filter-by-is-equal-to" id="toc-filter-by-is-equal-to" class="nav-link active" data-scroll-target="#filter-by-is-equal-to">Filter by “is equal to”</a></li>
+  <li><a href="#basic-filtering-techniques-.-etc." id="toc-basic-filtering-techniques-.-etc." class="nav-link active" data-scroll-target="#basic-filtering-techniques-.-etc.">Basic filtering techniques (<code>==</code>, <code>&lt;</code>. <code>!=</code> etc.)</a></li>
   <li><a href="#filter-by-is-empty" id="toc-filter-by-is-empty" class="nav-link" data-scroll-target="#filter-by-is-empty">Filter by “is empty”</a></li>
+  <li><a href="#filter-by-random-sample" id="toc-filter-by-random-sample" class="nav-link" data-scroll-target="#filter-by-random-sample">Filter by random sample</a></li>
   </ul>
 </nav>
     </div>
@@ -345,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Filtering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling.</p>
-<section id="filter-by-is-equal-to" class="level2">
-<h2 class="anchored" data-anchor-id="filter-by-is-equal-to">Filter by “is equal to”</h2>
+<section id="basic-filtering-techniques-.-etc." class="level2">
+<h2 class="anchored" data-anchor-id="basic-filtering-techniques-.-etc.">Basic filtering techniques (<code>==</code>, <code>&lt;</code>. <code>!=</code> etc.)</h2>
 <p>The most basic form of filtering is by comparing a search term with the values of a column in a dataframe.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">SQL</a></li></ul>
@@ -616,6 +617,157 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coalesce</span>(A, B, C) <span class="kw">is</span> <span class="kw">not</span> <span class="kw">null</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-by-random-sample" class="level2">
+<h2 class="anchored" data-anchor-id="filter-by-random-sample">Filter by random sample</h2>
+<p>Very useful to reduce large data</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">SQL</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>reduced_df <span class="op">=</span> orders.sample(frac<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)  <span class="co"># set a random seed for reproducibility</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>proportion <span class="op">=</span> <span class="bu">len</span>(reduced_df) <span class="op">/</span> <span class="bu">len</span>(orders) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Proportion of random rows is: </span><span class="sc">{</span>proportion<span class="sc">}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Proportion of random rows is: 30.0%</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>reduced_df <span class="ot">&lt;-</span> orders <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.3</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Proportion of random rows is: "</span>, <span class="fu">nrow</span>(reduced_df)<span class="sc">/</span><span class="fu">nrow</span>(orders)<span class="sc">*</span><span class="dv">100</span>,<span class="st">"%"</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Proportion of random rows is: 30%"</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  orders</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">random</span>()</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> (<span class="kw">select</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="op">*</span> <span class="fl">0.3</span> <span class="kw">from</span> orders); <span class="co">-- 30% random sample</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 31%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">order_id</th>
+<th style="text-align: left;">customer_id</th>
+<th style="text-align: right;">product_id</th>
+<th style="text-align: right;">quantity</th>
+<th style="text-align: left;">order_date</th>
+<th style="text-align: left;">delivery_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">49251813-7742-4766-968c-74d37c8da4a5</td>
+<td style="text-align: left;">9fd1cad1-094e-4f3e-86f0-e65c88a47c48</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2023-08-31</td>
+<td style="text-align: left;">2023-12-09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">01c87f2e-dbab-4214-8763-e90c1f183962</td>
+<td style="text-align: left;">cd53c3f7-d3e7-44de-b752-1fd90ae993b6</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">2023-04-21</td>
+<td style="text-align: left;">2023-12-08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">53a8c20a-cc24-41df-99d9-fda807369f5f</td>
+<td style="text-align: left;">c156d40f-6abe-457b-9061-b7361df352f6</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">2023-10-12</td>
+<td style="text-align: left;">2023-12-21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">02ab55e5-8fe1-4695-a338-55a31f7d56e4</td>
+<td style="text-align: left;">e2a4b37e-927e-487b-a4c7-61d9fa148fc2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2023-09-23</td>
+<td style="text-align: left;">2023-12-19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f49a4428-a87e-4f52-a245-5d5d8b581294</td>
+<td style="text-align: left;">2e4d44ae-3372-4df9-bd40-358b0c155478</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">2023-11-10</td>
+<td style="text-align: left;">2023-12-16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d3604325-6894-4cf4-8c4b-238054f15c8d</td>
+<td style="text-align: left;">d0e91369-00b2-4053-b3c7-dbd881dd8611</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">2023-01-30</td>
+<td style="text-align: left;">2023-12-19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7c430e1d-3b56-4056-9093-5872508a0969</td>
+<td style="text-align: left;">a92080a2-9598-4ff3-b2a8-caa46f123b88</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">2023-07-25</td>
+<td style="text-align: left;">2023-12-22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">978febf4-36d2-4a66-9935-897c2e92da6a</td>
+<td style="text-align: left;">00a56cfb-8b3f-460f-871f-49ba5de1816b</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2023-09-10</td>
+<td style="text-align: left;">2023-12-09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0e7c7f8b-d60e-4d79-8aeb-45cf339573a2</td>
+<td style="text-align: left;">05e5c0d0-ce55-4afd-be6b-5ad23562db90</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">2023-07-23</td>
+<td style="text-align: left;">2023-12-04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">27953dd2-5241-42ff-9820-f18c0a42a8bf</td>
+<td style="text-align: left;">2be51711-5874-4424-b27b-925781919a7f</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">2023-09-04</td>
+<td style="text-align: left;">2023-11-27</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>

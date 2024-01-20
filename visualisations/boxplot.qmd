@@ -34,7 +34,7 @@ boxplot <- mpg %>%
     )
   ) +
   geom_boxplot() +
-  geom_jitter(alpha=0.3)
+  geom_jitter(alpha=0.3)+
   labs(
     title = "Distribution of hwy per class",
     #subtitle = "",

@@ -32,7 +32,7 @@ df_reordered
 ```{r}
 
 df_reordered = customers %>% 
-  select(customer_name, everything()) # move name to beginning
+  select(customer_name, email, everything()) # move name to beginning
 df_reordered
 ```
 
@@ -42,6 +42,45 @@ df_reordered
 #| connection: con
 SELECT
   customer_name, -- just choose the order in the select statement
+  customer_id,
+  email,
+  phone_number
+FROM 
+  customers;
+```
+:::
+
+## Rename columns 
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+
+# rename the 'customer_name' column to 'Name'
+renamed = customers.rename(columns={'customer_name': 'Name'})
+
+print(renamed)
+```
+
+## R
+
+```{r}
+
+renamed = customers %>% 
+  select(Name = customer_name, email, everything()) # new_name = old_name
+renamed
+
+
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+SELECT
+  customer_name as Name,
   customer_id,
   email,
   phone_number

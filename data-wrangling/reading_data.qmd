@@ -7,7 +7,7 @@ source("setup.R")
 
 Reading in data from various sources is one of the key skills to get a day of data wrangling started. There are tons of vanilla functions as well as cool packages to do the job.
 
-## Excel files and CSVs
+## Excel files and CSVs / TSVs
 Excel/CSVs are a very handy format to transport (relatively) small amounts of data between stakeholders.
 
 ::: {.panel-tabset}
@@ -26,9 +26,60 @@ df = pd.read_csv("path.csv", sep=';') # for semicolon separated
 ```{r}
 #| eval: false
 
-df <- read_excel("path", sheet = "Sheet1") # readxl package
-df <- read.csv("path") # comma separated
+#library(readr)
+df <- read_excel("path", sheet = "Sheet1", range = "B4:F27") # readxl package
+df <- read.csv("path")  # comma separated
 df <- read.csv2("path") # semicolon separated
+df <- read_csv("path")  # readr package
+df <- read_csv2("path")  # readr package for semicolon, and comma as decimal point
+df <- read_tsv("path")  # readr package for tab separated files
+
+```
+
+:::
+
+## Connecting to databases
+The most convenient way of analysing data is by simply connecting to a DWH or DB directly. This can be achieved using pre-built packages.
+
+
+::: {.panel-tabset}
+
+## Python
+```{python}
+#| eval: false
+
+import sqlite3
+import pandas as pd
+
+con = sqlite3.connect("path_to_db.sqlite")
+
+# Get a list of all tables in the database
+cursor = con.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+tables = cursor.fetchall()
+print("Tables in the database:", tables)
+
+cursor.execute("SELECT * FROM orders;")
+rows = cursor.fetchall()
+
+rows.head()
+
+# Close the connection
+con.close()
+```
+
+## R
+```{r}
+#| eval: false
+library(DBI)
+con <- dbConnect(RSQLite::SQLite(), "path_to_db.sqlite")
+
+db_list_tables(con) # show all tables in the db
+
+orders <- tbl(con, "orders")
+head(orders)
+
+dbDisconnect(shop_db)
 
 ```
 

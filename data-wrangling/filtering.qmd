@@ -16,7 +16,7 @@ suppliers = r.suppliers
 
 Filtering dataframes is a crucial skill of any data scientist and there is probably the most used method in data wrangling.
 
-## Filter by "is equal to" 
+## Basic filtering techniques (`==`, `<`. `!=` etc.) 
 The most basic form of filtering is by comparing a search term with the values of a column in a dataframe.
 
 ::: {.panel-tabset}
@@ -183,5 +183,51 @@ from
 where 0=0
   coalesce(A, B, C) is not null;
 ```
+
+:::
+
+## Filter by random sample
+Very useful to reduce large data
+
+::: {.panel-tabset}
+
+## Python
+```{python}
+import pandas as pd
+
+reduced_df = orders.sample(frac=0.3, random_state=42)  # set a random seed for reproducibility
+
+proportion = len(reduced_df) / len(orders) * 100
+print(f"Proportion of random rows is: {proportion}%")
+
+```
+
+## R
+
+```{r}
+library(dplyr)
+
+reduced_df <- orders %>% 
+  slice_sample(prop = 0.3)
+
+print(paste0("Proportion of random rows is: ", nrow(reduced_df)/nrow(orders)*100,"%" ))
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+select
+  *
+from
+  orders
+order by
+  random()
+limit (select count(*) * 0.3 from orders); -- 30% random sample
+
+
+```
+
 
 :::
