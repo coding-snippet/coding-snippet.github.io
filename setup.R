@@ -4,6 +4,8 @@ library(readxl)
 library(dplyr)
 library(reticulate)
 library(renv)
+library(ggplot2)
+library(babynames)
 
 # Establish a connection to the SQLite database
 con <- dbConnect(RSQLite::SQLite(), "data/db.sqlite")
@@ -13,3 +15,8 @@ customers <- read_excel("data/db.xlsx", sheet = "Customers")
 suppliers <- read_excel("data/db.xlsx", sheet = "Suppliers")
 products <- read_excel("data/db.xlsx", sheet = "Products")
 orders <- read_excel("data/db.xlsx", sheet = "Orders")
+
+babynames = babynames::babynames
+# installing python packages:
+#py_install("seaborn")
+

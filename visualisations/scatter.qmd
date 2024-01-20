@@ -1,0 +1,183 @@
+---
+title: "Scatter plots"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Point plots for 2D data
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+
+#library(ggplot2)
+scatter <- ChickWeight %>% 
+  ggplot(
+    aes(
+      x = Time,
+      y = weight,
+      color = as.factor(Diet)
+    )
+  ) +
+  geom_point() +
+  labs(
+    title = "Weight by Chicken over time",
+    subtitle = "The chicken were fed with 4 different diets.",
+    x = "Time [days]",
+    y = "Weight [g]",
+    color = "Diet"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("1" = "#d94a62", "2" = "#6d61e8", "3" = "#e3d97f", "4" = "#a4eb8f"),
+    breaks = c("1", "2", "3", "4")
+  ) +
+  theme_minimal()
+
+print(scatter)
+
+```
+
+```{r, message=FALSE}
+
+#library(ggplot2)
+scatter <- babynames %>% 
+  filter(name %in% c("Mona", "Anna", "Lisa"), sex == "F") %>% 
+  ggplot(
+    aes(
+      x = year,
+      y = n,
+      color = name
+    )
+  ) +
+  geom_point() +
+  labs(
+    title = "Amount of named Babies per year in US",
+    subtitle = "Selection of Anna, Mona and Lisa",
+    x = "Year",
+    y = "Number of Babies",
+    color = "Name"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("Anna" = "#d94a62", "Lisa" = "#a4eb8f", "Mona"="darkblue"),
+    breaks = c("Mona", "Lisa","Anna") # Order in the Legend
+  ) +
+  theme_minimal()
+
+print(scatter)
+
+```
+
+### Color Gradients (low, high)
+```{r, message=FALSE}
+
+#library(ggplot2)
+humans = starwars %>% 
+  filter(species == "Human", !is.na(mass)) %>% 
+  mutate(
+    BMI = mass/(height/100)^2
+  )
+
+scatter <- humans %>%
+  ggplot(
+    aes(
+      x=mass,
+      y=height,
+      color = BMI
+    )
+  ) +
+  geom_point(size = 4, alpha = 0.8) +
+  labs(
+    title = "Length by Weight chart of famous Star Wars Heros",
+    subtitle = "Colored by BMI",
+    x = "Mass [kg]",
+    y = "Height [cm]",
+    color = "BMI"  #Legend title
+  ) +
+  scale_color_gradient(
+    low = "yellow",
+    high = "red"
+  ) +
+  theme_minimal()
+
+print(scatter)
+
+```
+### Color Gradients (low, mid, high)
+```{r, message=FALSE}
+
+#library(ggplot2)
+humans = starwars %>% 
+  filter(species == "Human", !is.na(mass)) %>% 
+  mutate(
+    BMI = mass/(height/100)^2
+  )
+
+scatter <- humans %>%
+  ggplot(
+    aes(
+      x=mass,
+      y=height,
+      color = BMI
+    )
+  ) +
+  geom_point(size = 4, alpha = 0.8) +
+  labs(
+    title = "Length by Weight chart of famous Star Wars Heros",
+    subtitle = "Colored by BMI",
+    x = "Mass [kg]",
+    y = "Height [cm]",
+    color = "BMI"  #Legend title
+  ) +
+  scale_color_gradient2(
+    low = "yellow",
+    mid = "pink",
+    midpoint = 27,
+    high = "red"
+  ) +
+  theme_minimal()
+
+print(scatter)
+
+```
+
+## Python
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+scatter = sns.scatterplot(
+    data=ChickWeight,
+    x='Time',
+    y='weight',
+    hue='Diet',
+    palette={
+        "1": "#d94a62",
+        "2": "#6d61e8", 
+        "3": "#e3d97f",
+        "4": "#a4eb8f"
+    }
+)
+
+plt.title("Weight by Chicken over time")
+plt.xlabel("Time [days]")
+plt.ylabel("Weight [g]")
+plt.legend(title="Diet")
+plt.show()
+
+```
+:::

@@ -1,0 +1,102 @@
+---
+title: "Exploring data"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
+## Show top / last rows
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+
+suppliers.head()
+suppliers.tail()
+```
+
+## R
+
+```{r, message=FALSE}
+
+head(suppliers)
+tail(suppliers)
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+select * from suppliers order by supplier_id limit 5;
+
+```
+
+
+```{sql}
+#| connection: con
+
+select * from suppliers order by supplier_id desc limit 5;
+```
+:::
+
+## Check dimensions & structure
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+
+num_rows = len(orders)
+print(f"Number of rows: {num_rows}")
+
+num_cols = len(orders.columns)
+print(f"Number of columns: {num_cols}")
+
+
+print(orders.info()) # Structure of the df
+
+
+print(orders.describe()) # Summary statistics
+```
+
+## R
+
+```{r}
+nrow(orders)
+ncol(orders)
+str(orders)
+summary(orders)
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+select count(*) as num_rows from orders;
+
+-- Adapt the lines below depending on used DB
+--select
+--  count(*) as num_cols
+--from
+--  information_schema.columns
+--where 0=0
+--  and table_name = 'orders';
+
+
+```
+
+:::

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>coding-snippet - Loops</title>
+<title>coding-snippet - Exploring data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data wrangling</li><li class="breadcrumb-item"><a href="../data-wrangling/choices.html">Control flow</a></li><li class="breadcrumb-item"><a href="../data-wrangling/loops.html">Loops</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data wrangling</li><li class="breadcrumb-item"><a href="../data-wrangling/reading_data.html">Data frames</a></li><li class="breadcrumb-item"><a href="../data-wrangling/exploring.html">Exploring data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -181,13 +181,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Control flow</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data-wrangling/choices.html" class="sidebar-item-text sidebar-link">
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-wrangling/loops.html" class="sidebar-item-text sidebar-link active">
+  <a href="../data-wrangling/loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loops</span></a>
   </div>
 </li>
@@ -204,13 +204,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Data frames</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data-wrangling/reading_data.html" class="sidebar-item-text sidebar-link">
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-wrangling/exploring.html" class="sidebar-item-text sidebar-link">
+  <a href="../data-wrangling/exploring.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exploring data</span></a>
   </div>
 </li>
@@ -307,7 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-for-loop" id="toc-the-for-loop" class="nav-link active" data-scroll-target="#the-for-loop">The <code>for</code> loop</a></li>
+  <li><a href="#show-top-last-rows" id="toc-show-top-last-rows" class="nav-link active" data-scroll-target="#show-top-last-rows">Show top / last rows</a></li>
+  <li><a href="#check-dimensions-structure" id="toc-check-dimensions-structure" class="nav-link" data-scroll-target="#check-dimensions-structure">Check dimensions &amp; structure</a></li>
   </ul>
 </nav>
     </div>
@@ -316,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Loops</h1>
+<h1 class="title">Exploring data</h1>
 </div>
 
 
@@ -331,147 +332,382 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="the-for-loop" class="level2">
-<h2 class="anchored" data-anchor-id="the-for-loop">The <code>for</code> loop</h2>
-<p><code>for</code> loops are probably the most used form of loops. A for loop iterates over iterable objects such as lists, vectors, sets and other data structures. In contrast to the <code>while</code> loop, the <code>for</code> loop is less prone to ending up in infinite loop and is therefore preferable. :::{{.callout-note}} Note, that for loops can often be replaced with the more sophisticated apply, sapply or lapply. :::</p>
+<section id="show-top-last-rows" class="level2">
+<h2 class="anchored" data-anchor-id="show-top-last-rows">Show top / last rows</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">SQL</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Iterate over the items in a list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> x:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>suppliers.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>hello
-my
-name
-is
-eugen
-what's
-your
-name?</code></pre>
+<pre><code>                            supplier_id  ...                                            address
+0  e0fd9397-2fbc-49d4-8d1f-c7708443d1ac  ...        6480 Henderson Ranch\nPort Nicole, RI 15164
+1  70e3f6f7-6d0d-4239-8a23-38bea2219425  ...                   PSC 5322, Box 2350\nAPO AP 44327
+2  a520d32a-e6dc-4051-b11b-58db53efc241  ...     24075 Garcia Hill Suite 900\nMarkton, NH 13547
+3  4f63e2c8-181b-435a-a30c-4f2bd4f03cf0  ...  96401 Fernandez Rest Suite 354\nDavidmouth, NM...
+4  278d2735-a01b-4993-a648-e81a38593478  ...                   PSC 5358, Box 9304\nAPO AE 35414
+
+[5 rows x 5 columns]</code></pre>
 </div>
-</div>
-<p>Get the index of the element using enumerate():</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, value <span class="kw">in</span> <span class="bu">enumerate</span>(x):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>suppliers.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 hello
-1 my
-2 name
-3 is
-4 eugen
-5 what's
-6 your
-7 name?</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Keep in mind, that iterables start with the index <code>0</code> in python</p>
-</div>
-</div>
-<p>Jump to next iteration using <code>continue</code>, exit the loop using <code>break</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> x:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="kw">in</span> [<span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>]:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="st">"eugen"</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>hello
-eugen</code></pre>
+<pre><code>                             supplier_id  ...                                            address
+7   b7fe0aa1-0742-4a23-839e-5ecb293b8348  ...         37237 Johnson Squares\nCoryville, MN 02964
+8   c04e4e30-f25d-48f5-95f1-ac67d152eff3  ...           8377 Arnold Summit\nPerezhaven, UT 40182
+9   c450c364-da66-41fc-8a20-ef8c81fe0092  ...  28359 Becky Forges Suite 510\nMcclureton, WV 0...
+10  38a0efd5-a37a-4dc4-81db-f1285aec5bc0  ...          82367 Andrew Course\nAlyssaberg, FL 82783
+11  9fd06f8f-9112-40b1-b39c-ef302a7a667a  ...      6548 Terry Junctions\nSouth Kristin, KS 64925
+
+[5 rows x 5 columns]</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Iterate over the items in a vector:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(suppliers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "hello"
-[1] "my"
-[1] "name"
-[1] "is"
-[1] "eugen"
-[1] "what's"
-[1] "your"
-[1] "name?"</code></pre>
+<pre><code># A tibble: 6 × 5
+  supplier_id                  supplier_name supplier_email phone_number address
+  &lt;chr&gt;                        &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;  
+1 e0fd9397-2fbc-49d4-8d1f-c77… Scott Inc     terri64@denni… +1-624-789-… "6480 …
+2 70e3f6f7-6d0d-4239-8a23-38b… Stephenson-G… allison76@she… 538.519.5134 "PSC 5…
+3 a520d32a-e6dc-4051-b11b-58d… Morgan, Lars… qstout@willia… 321-639-9342 "24075…
+4 4f63e2c8-181b-435a-a30c-4f2… Lewis, Ochoa… theresajacobs… 001-899-743… "96401…
+5 278d2735-a01b-4993-a648-e81… Taylor, Brew… christinemors… 229.847.0926 "PSC 5…
+6 a5dafaa6-a0af-404e-be90-245… Jones-Liu     lawsonbrian@s… +1-449-946-… "USNV …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(suppliers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  supplier_id                  supplier_name supplier_email phone_number address
+  &lt;chr&gt;                        &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;  
+1 17a4736d-6fe6-404c-bf0c-20c… Flowers Inc   davidlane@dav… 796-014-6882 "858 C…
+2 b7fe0aa1-0742-4a23-839e-5ec… Bennett, Ros… ithompson@bro… (144)217-34… "37237…
+3 c04e4e30-f25d-48f5-95f1-ac6… Richards-Lit… moodybrittany… +1-865-223-… "8377 …
+4 c450c364-da66-41fc-8a20-ef8… Patel, Barre… lucas13@duran… +1-779-999-… "28359…
+5 38a0efd5-a37a-4dc4-81db-f12… Jackson-Duran turnergloria@… 897-080-050… "82367…
+6 9fd06f8f-9112-40b1-b39c-ef3… Galvan-Alexa… curtis73@coop… +1-834-163-… "6548 …</code></pre>
 </div>
 </div>
-<p>Get the index of the element using seq_along():</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) { <span class="co"># always use seq_along instead of 1:length(x) or 1:nrow(df)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(i,x[i]))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 hello"
-[1] "2 my"
-[1] "3 name"
-[1] "4 is"
-[1] "5 eugen"
-[1] "6 what's"
-[1] "7 your"
-[1] "8 name?"</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> suppliers <span class="kw">order</span> <span class="kw">by</span> supplier_id <span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">supplier_id</th>
+<th style="text-align: left;">supplier_name</th>
+<th style="text-align: left;">supplier_email</th>
+<th style="text-align: left;">phone_number</th>
+<th style="text-align: left;">address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">17a4736d-6fe6-404c-bf0c-20c9ac3a7b13</td>
+<td style="text-align: left;">Flowers Inc</td>
+<td style="text-align: left;">davidlane@davis.com</td>
+<td style="text-align: left;">796-014-6882</td>
+<td style="text-align: left;">858 Colton Via Apt. 071</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lake Michelleshire, PA 08254</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">278d2735-a01b-4993-a648-e81a38593478</td>
+<td style="text-align: left;">Taylor, Brewer and Richard</td>
+<td style="text-align: left;">christinemorse@shields.biz</td>
+<td style="text-align: left;">229.847.0926</td>
+<td style="text-align: left;">PSC 5358, Box 9304</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">APO AE 35414</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">38a0efd5-a37a-4dc4-81db-f1285aec5bc0</td>
+<td style="text-align: left;">Jackson-Duran</td>
+<td style="text-align: left;">turnergloria@williams.org</td>
+<td style="text-align: left;">897-080-0502x231</td>
+<td style="text-align: left;">82367 Andrew Course</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alyssaberg, FL 82783</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4f63e2c8-181b-435a-a30c-4f2bd4f03cf0</td>
+<td style="text-align: left;">Lewis, Ochoa and Hendricks</td>
+<td style="text-align: left;">theresajacobs@mills-may.com</td>
+<td style="text-align: left;">001-899-743-1582x55248</td>
+<td style="text-align: left;">96401 Fernandez Rest Suite 354</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Davidmouth, NM 75675</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">70e3f6f7-6d0d-4239-8a23-38bea2219425</td>
+<td style="text-align: left;">Stephenson-Gonzalez</td>
+<td style="text-align: left;">allison76@shepherd.com</td>
+<td style="text-align: left;">538.519.5134</td>
+<td style="text-align: left;">PSC 5322, Box 2350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">APO AP 44327</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Keep in mind, that iterables start with the index <code>1</code> in R.</p>
-</div>
-</div>
-<p>Jump to next iteration using <code>next</code>, exit the loop using <code>break</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>, <span class="st">"eugen"</span>, <span class="st">"what's"</span>, <span class="st">"your"</span>, <span class="st">"name?"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"my"</span>, <span class="st">"name"</span>, <span class="st">"is"</span>)) {</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="st">"eugen"</span>) <span class="cf">break</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> suppliers <span class="kw">order</span> <span class="kw">by</span> supplier_id <span class="kw">desc</span> <span class="kw">limit</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">supplier_id</th>
+<th style="text-align: left;">supplier_name</th>
+<th style="text-align: left;">supplier_email</th>
+<th style="text-align: left;">phone_number</th>
+<th style="text-align: left;">address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">e0fd9397-2fbc-49d4-8d1f-c7708443d1ac</td>
+<td style="text-align: left;">Scott Inc</td>
+<td style="text-align: left;">terri64@dennis.com</td>
+<td style="text-align: left;">+1-624-789-0312x85642</td>
+<td style="text-align: left;">6480 Henderson Ranch</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Port Nicole, RI 15164</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c450c364-da66-41fc-8a20-ef8c81fe0092</td>
+<td style="text-align: left;">Patel, Barrett and Mullen</td>
+<td style="text-align: left;">lucas13@duran.info</td>
+<td style="text-align: left;">+1-779-999-3397x19609</td>
+<td style="text-align: left;">28359 Becky Forges Suite 510</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mcclureton, WV 04781</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c04e4e30-f25d-48f5-95f1-ac67d152eff3</td>
+<td style="text-align: left;">Richards-Little</td>
+<td style="text-align: left;">moodybrittany@hamilton-juarez.com</td>
+<td style="text-align: left;">+1-865-223-0136x5947</td>
+<td style="text-align: left;">8377 Arnold Summit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perezhaven, UT 40182</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b7fe0aa1-0742-4a23-839e-5ecb293b8348</td>
+<td style="text-align: left;">Bennett, Rose and Curry</td>
+<td style="text-align: left;">ithompson@brown-dixon.com</td>
+<td style="text-align: left;">(144)217-3402x705</td>
+<td style="text-align: left;">37237 Johnson Squares</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coryville, MN 02964</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a5dafaa6-a0af-404e-be90-245a62ff8a52</td>
+<td style="text-align: left;">Jones-Liu</td>
+<td style="text-align: left;">lawsonbrian@stone.net</td>
+<td style="text-align: left;">+1-449-946-5306x917</td>
+<td style="text-align: left;">USNV Martinez</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FPO AA 68692</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-dimensions-structure" class="level2">
+<h2 class="anchored" data-anchor-id="check-dimensions-structure">Check dimensions &amp; structure</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">SQL</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>num_rows <span class="op">=</span> <span class="bu">len</span>(orders)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of rows: </span><span class="sc">{</span>num_rows<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "hello"
-[1] "eugen"</code></pre>
+<pre><code>Number of rows: 500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> <span class="bu">len</span>(orders.columns)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of columns: </span><span class="sc">{</span>num_cols<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of columns: 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders.info()) <span class="co"># Structure of the df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 500 entries, 0 to 499
+Data columns (total 6 columns):
+ #   Column         Non-Null Count  Dtype         
+---  ------         --------------  -----         
+ 0   order_id       500 non-null    object        
+ 1   customer_id    500 non-null    object        
+ 2   product_id     500 non-null    float64       
+ 3   quantity       500 non-null    float64       
+ 4   order_date     500 non-null    datetime64[ns]
+ 5   delivery_date  500 non-null    datetime64[ns]
+dtypes: datetime64[ns](2), float64(2), object(2)
+memory usage: 23.6+ KB
+None</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders.describe()) <span class="co"># Summary statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       product_id  ...        delivery_date
+count  500.000000  ...                  500
+mean    15.232000  ...  2023-12-10 20:09:36
+min      1.000000  ...  2023-11-26 00:00:00
+25%      8.000000  ...  2023-12-03 00:00:00
+50%     15.000000  ...  2023-12-11 00:00:00
+75%     23.000000  ...  2023-12-19 00:00:00
+max     30.000000  ...  2023-12-25 00:00:00
+std      8.758516  ...                  NaN
+
+[8 rows x 4 columns]</code></pre>
 </div>
 </div>
-<!-- ## Bash -->
-<!-- ```{bash} -->
-<!-- #!/bin/bash -->
-<!-- x=("hello" "my" "name" "is" "eugen" "what's" "your" "name?") -->
-<!-- for i in "${x[@]}" -->
-<!-- do -->
-<!--     echo "$i" -->
-<!-- done -->
-<!-- ``` -->
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(orders)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(orders)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(orders)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [500 × 6] (S3: tbl_df/tbl/data.frame)
+ $ order_id     : chr [1:500] "4ae1b891-4576-4c92-9d33-183788716d30" "7f447e86-16be-42ff-a32c-5ad13f06adbf" "aab0b35f-6e75-49d7-a85f-ce375a941d36" "a51c1a94-911d-4415-a4ef-8559b67cbdcf" ...
+ $ customer_id  : chr [1:500] "97f268da-60bd-48b0-b51b-5648641c04cb" "36cd45dd-3b82-4672-91ed-ea3bd821024a" "5b4e2a6e-dab7-415b-badb-1e4ef26155ac" "086af576-2f26-453c-ac15-5a597d7b9894" ...
+ $ product_id   : num [1:500] 27 30 6 12 11 17 28 20 22 8 ...
+ $ quantity     : num [1:500] 2 5 3 2 1 3 1 4 4 5 ...
+ $ order_date   : POSIXct[1:500], format: "2023-03-12" "2023-09-08" ...
+ $ delivery_date: POSIXct[1:500], format: "2023-12-09" "2023-12-02" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(orders)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   order_id         customer_id          product_id       quantity    
+ Length:500         Length:500         Min.   : 1.00   Min.   :1.000  
+ Class :character   Class :character   1st Qu.: 8.00   1st Qu.:2.000  
+ Mode  :character   Mode  :character   Median :15.00   Median :3.000  
+                                       Mean   :15.23   Mean   :3.144  
+                                       3rd Qu.:23.00   3rd Qu.:4.000  
+                                       Max.   :30.00   Max.   :5.000  
+   order_date                  delivery_date                
+ Min.   :2023-01-01 00:00:00   Min.   :2023-11-26 00:00:00  
+ 1st Qu.:2023-03-16 18:00:00   1st Qu.:2023-12-03 00:00:00  
+ Median :2023-06-10 12:00:00   Median :2023-12-11 00:00:00  
+ Mean   :2023-06-10 22:36:28   Mean   :2023-12-10 20:09:36  
+ 3rd Qu.:2023-08-31 06:00:00   3rd Qu.:2023-12-19 00:00:00  
+ Max.   :2023-11-25 00:00:00   Max.   :2023-12-25 00:00:00  </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">as</span> num_rows <span class="kw">from</span> orders;</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- Adapt the lines below depending on used DB</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">--select</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">--  count(*) as num_cols</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">--from</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">--  information_schema.columns</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">--where 0=0</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">--  and table_name = 'orders';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="knitsql-table">
+<table class="table table-sm table-striped small">
+<caption>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">num_rows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
