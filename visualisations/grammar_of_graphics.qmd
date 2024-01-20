@@ -1,0 +1,47 @@
+---
+title: "Grammar of graphics"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Syntax depends on the used tool
+There are plenty of data visualisation tools out there: BI tools such as Power BI, Tableau, MicroStrategy and so on are often used in larger companies who have a dedicated BI team. Many companies and universities however rely on open source data visualisation software and programming languages such as R (E.g. ggplot2, shiny) or Python (matplotlib, seaborn etc.). Depending on which technology is available and suitable for the specific use-case, the tool must be wisely chosen.
+
+The grammar of graphics for the different tools can be fairly different from each other, this is why this section is dedicated to explaining the basic concepts of the different tools.
+
+::: {.panel-tabset}
+
+## R ggplot2
+The grammar of graphics consists of the following components:
+
+### Dataset and aesthetics
+For example: `ggplot(data=df, mapping=aes(x=col1, y=col2))`. Aesthestics are things like the axes, shapes, colors, groups and so on. It is important to remember, that the aesthetics that are written inside the `ggplot()`will be inherited by the geometric objects, if they are not overwritten manually.
+
+### Geometric Objects
+These are the different ways on how to display the data: E.g. by points (`gemo_point()`), lines (`geom_line()`), bars (`geom_bar()`) etc.
+
+### Scales
+Scales define how the data is mapped to each aesthetic. E.g. `scale_x_continous()`, which is the default, or `scale_y_log10()` for lagarithmic scales.
+
+### Coordinate System
+The default coordinate system is the `coord_cartesian()`, whereas e.g. `coord_polar()` is used for circular visualisations such as the widely mobbed `piechart`.
+
+### Facets
+Facets are useful to split data into groups and visualise each group individually in smaller multiples.
+
+### Themes
+Themes give our plots a nice look and can be adjusted according to the style wanted.
+
+:::

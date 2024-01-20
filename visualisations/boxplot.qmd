@@ -1,0 +1,77 @@
+---
+title: "Boxplots"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Visualizing distributions with boxplots
+
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+#library(ggplot2)
+boxplot <- mpg %>% 
+  ggplot(
+    aes(
+      x = class,
+      y = hwy,
+      fill = class
+    )
+  ) +
+  geom_boxplot() +
+  geom_jitter(alpha=0.3)
+  labs(
+    title = "Distribution of hwy per class",
+    #subtitle = "",
+    x = "Car class",
+    y = "hwy",
+    #color = ""  #Legend title
+  ) +
+  theme_minimal()
+
+print(boxplot)
+
+```
+
+```{r, message=FALSE}
+#library(ggplot2)
+library(forcats)
+boxplot <- mpg %>% 
+  ggplot(
+    aes(
+      x = hwy,
+      # reorder class-factors by median of hwy descending
+      y = fct_reorder(class, hwy, .fun=median, .desc=T),
+      fill = class 
+    )
+  ) +
+  geom_boxplot() +
+  geom_jitter(alpha=0.3) +
+  labs(
+    title = "Distribution of hwy per class",
+    x = "hwy",
+    y = "Car class",
+    caption = "Pickups are the coolest"
+  ) +
+  theme_minimal()
+
+print(boxplot)
+
+```
+
+:::

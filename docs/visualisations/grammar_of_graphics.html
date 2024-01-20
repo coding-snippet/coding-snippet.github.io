@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>coding-snippet - Importing data</title>
+<title>coding-snippet - Grammar of graphics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -133,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data wrangling</li><li class="breadcrumb-item"><a href="../data-wrangling/reading_data.html">Data frames</a></li><li class="breadcrumb-item"><a href="../data-wrangling/reading_data.html">Importing data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../visualisations/grammar_of_graphics.html">Visualising data</a></li><li class="breadcrumb-item"><a href="../visualisations/grammar_of_graphics.html">Grammar of graphics</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -204,16 +170,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Data frames</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-wrangling/reading_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../data-wrangling/reading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing data</span></a>
   </div>
 </li>
@@ -274,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../visualisations/grammar_of_graphics.html" class="sidebar-item-text sidebar-link">
+  <a href="../visualisations/grammar_of_graphics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Grammar of graphics</span></a>
   </div>
 </li>
@@ -319,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#excel-files-and-csvs" id="toc-excel-files-and-csvs" class="nav-link active" data-scroll-target="#excel-files-and-csvs">Excel files and CSVs</a></li>
+  <li><a href="#syntax-depends-on-the-used-tool" id="toc-syntax-depends-on-the-used-tool" class="nav-link active" data-scroll-target="#syntax-depends-on-the-used-tool">Syntax depends on the used tool</a></li>
   </ul>
 </nav>
     </div>
@@ -328,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Importing data</h1>
+<h1 class="title">Grammar of graphics</h1>
 </div>
 
 
@@ -343,27 +309,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Reading in data from various sources is one of the key skills to get a day of data wrangling started. There are tons of vanilla functions as well as cool packages to do the job.</p>
-<section id="excel-files-and-csvs" class="level2">
-<h2 class="anchored" data-anchor-id="excel-files-and-csvs">Excel files and CSVs</h2>
-<p>Excel/CSVs are a very handy format to transport (relatively) small amounts of data between stakeholders.</p>
+<section id="syntax-depends-on-the-used-tool" class="level2">
+<h2 class="anchored" data-anchor-id="syntax-depends-on-the-used-tool">Syntax depends on the used tool</h2>
+<p>There are plenty of data visualisation tools out there: BI tools such as Power BI, Tableau, MicroStrategy and so on are often used in larger companies who have a dedicated BI team. Many companies and universities however rely on open source data visualisation software and programming languages such as R (E.g. ggplot2, shiny) or Python (matplotlib, seaborn etc.). Depending on which technology is available and suitable for the specific use-case, the tool must be wisely chosen.</p>
+<p>The grammar of graphics for the different tools can be fairly different from each other, this is why this section is dedicated to explaining the basic concepts of the different tools.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R ggplot2</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"path.xlsx"</span>, sheet_name<span class="op">=</span><span class="st">"Sheet1"</span>) <span class="co"># for Excels</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"path.csv"</span>) <span class="co"># for comma separated</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"path.csv"</span>, sep<span class="op">=</span><span class="st">';'</span>) <span class="co"># for semicolon separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"path"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>) <span class="co"># readxl package</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"path"</span>) <span class="co"># comma separated</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"path"</span>) <span class="co"># semicolon separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>The grammar of graphics consists of the following components:</p>
+<section id="dataset-and-aesthetics" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-and-aesthetics">Dataset and aesthetics</h3>
+<p>For example: <code>ggplot(data=df, mapping=aes(x=col1, y=col2))</code>. Aesthestics are things like the axes, shapes, colors, groups and so on. It is important to remember, that the aesthetics that are written inside the <code>ggplot()</code>will be inherited by the geometric objects, if they are not overwritten manually.</p>
+</section>
+<section id="geometric-objects" class="level3">
+<h3 class="anchored" data-anchor-id="geometric-objects">Geometric Objects</h3>
+<p>These are the different ways on how to display the data: E.g. by points (<code>gemo_point()</code>), lines (<code>geom_line()</code>), bars (<code>geom_bar()</code>) etc.</p>
+</section>
+<section id="scales" class="level3">
+<h3 class="anchored" data-anchor-id="scales">Scales</h3>
+<p>Scales define how the data is mapped to each aesthetic. E.g. <code>scale_x_continous()</code>, which is the default, or <code>scale_y_log10()</code> for lagarithmic scales.</p>
+</section>
+<section id="coordinate-system" class="level3">
+<h3 class="anchored" data-anchor-id="coordinate-system">Coordinate System</h3>
+<p>The default coordinate system is the <code>coord_cartesian()</code>, whereas e.g.&nbsp;<code>coord_polar()</code> is used for circular visualisations such as the widely mobbed <code>piechart</code>.</p>
+</section>
+<section id="facets" class="level3">
+<h3 class="anchored" data-anchor-id="facets">Facets</h3>
+<p>Facets are useful to split data into groups and visualise each group individually in smaller multiples.</p>
+</section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>Themes give our plots a nice look and can be adjusted according to the style wanted.</p>
+</section>
 </div>
 </div>
 </div>

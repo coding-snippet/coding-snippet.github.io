@@ -34,11 +34,13 @@ website:
           - data-wrangling/faking.qmd
       - section: "Visualising data"
         contents:
+          - visualisations/grammar_of_graphics.qmd
           - visualisations/scatter.qmd
+          - visualisations/boxplot.qmd
+
       - section: "Coding styles"
         contents:
           - coding-styles/functions.qmd
-
 format:
   html:
     theme:

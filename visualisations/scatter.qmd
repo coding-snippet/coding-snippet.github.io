@@ -54,6 +54,104 @@ print(scatter)
 ```{r, message=FALSE}
 
 #library(ggplot2)
+scatter <- ChickWeight %>% 
+  ggplot(
+    aes(
+      x = Time,
+      y = weight,
+      color = as.factor(Diet)
+    )
+  ) +
+  geom_point() +
+  labs(
+    title = "Weight by Chicken over time",
+    subtitle = "The chicken were fed with 4 different diets.",
+    x = "Time [days]",
+    y = "Weight [g]",
+    color = "Diet"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("1" = "#d94a62", "2" = "#6d61e8", "3" = "#e3d97f", "4" = "#a4eb8f"),
+    breaks = c("1", "2", "3", "4")
+  ) +
+  facet_wrap(vars(Diet)) +
+  theme_minimal()
+
+print(scatter)
+
+```
+
+```{r, message=FALSE}
+# For the grey dots:
+# A new dataset must be created where the column in the facet_wrap is missing
+ChickWeight_wo_diet <- ChickWeight %>% select(-Diet)
+#library(ggplot2)
+scatter <- ChickWeight %>% 
+  ggplot(
+    aes(
+      x = Time,
+      y = weight,
+      color = as.factor(Diet)
+    )
+  ) +
+  geom_point(
+    data = ChickWeight_wo_diet,
+    mapping = aes(
+      x = Time,
+      y = weight),
+      color = "grey" # Overwriting the inherited color -> adding grey dots
+  ) +
+  geom_point() + # adding the colored dots
+  labs(
+    title = "Weight by Chicken over time",
+    subtitle = "The chicken were fed with 4 different diets.",
+    x = "Time [days]",
+    y = "Weight [g]",
+    color = "Diet"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("1" = "#d94a62", "2" = "#6d61e8", "3" = "#e3d97f", "4" = "#a4eb8f"),
+    breaks = c("1", "2", "3", "4")
+  ) +
+  facet_wrap(vars(Diet)) +
+  theme_minimal()
+
+print(scatter)
+```
+
+```{r, message=FALSE}
+
+#library(ggplot2)
+scatter <- ChickWeight %>% 
+  ggplot(
+    aes(
+      x = Time,
+      y = weight,
+      color = as.factor(Diet)
+    )
+  ) +
+  geom_point() +
+  geom_smooth() + # for the fitted lines
+  labs(
+    title = "Weight by Chicken over time",
+    subtitle = "The chicken were fed with 4 different diets.",
+    x = "Time [days]",
+    y = "Weight [g]",
+    color = "Diet"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("1" = "#d94a62", "2" = "#6d61e8", "3" = "#e3d97f", "4" = "#a4eb8f"),
+    breaks = c("1", "2", "3", "4")
+  ) +
+  theme_minimal()
+
+print(scatter)
+
+```
+
+```{r, message=FALSE}
+
+#library(ggplot2)
 scatter <- babynames %>% 
   filter(name %in% c("Mona", "Anna", "Lisa"), sex == "F") %>% 
   ggplot(
