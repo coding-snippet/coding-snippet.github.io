@@ -1,0 +1,209 @@
+---
+title: "Dates"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+```
+
+## Converting Strings to dates
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+from datetime import datetime
+date = datetime.strptime("120506", "%y%m%d").date()
+print(date)
+```
+
+## R
+
+### Numbers (as strings) to date
+```{r, message=FALSE}
+library(lubridate)
+
+# year-month-day, output will be of class date
+ymd(c("070605", "07-06-05", "07.06.05", "2007 06 05"))
+# year-day-month output will be of class date
+ydm(c("070605", "07-06-05", "07.06.05", "2007 06 05")) 
+```
+
+### For more special forms:
+```{r}
+
+
+# Make sure to check encodings / locale
+parse_date_time("7 Apr 23", orders = "dby") 
+```
+
+
+## SQL
+
+```{sql}
+#| connection: con
+
+SELECT
+    DATE('20' || SUBSTR('070605', 1, 2) || '-' || SUBSTR('070605', 3, 2) || '-' || SUBSTR('070605', 5, 2)) AS parsed_date;
+
+```
+:::
+
+## Generating new dates
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+from datetime import date
+
+# datetime and date are not the same functions!
+new_date = date(2023, 12, 13) 
+
+print(new_date)
+```
+
+## R
+
+```{r}
+library(lubridate)
+
+new_date = make_date(year=2023, month=12, day=13)
+new_date
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+select
+  date('2023-12-31') as new_date;
+```
+:::
+
+## Extracting info from dates
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+from datetime import datetime
+
+
+# Select specific columns
+selected_columns = orders[['quantity', 'order_date']].copy()
+
+# Extract year, month, and day
+selected_columns['year'] = selected_columns['order_date'].dt.year
+selected_columns['month'] = selected_columns['order_date'].dt.month
+selected_columns['day'] = selected_columns['order_date'].dt.day
+
+# Select first 5 rows
+result = selected_columns.head(5)
+
+# Print the result
+print(result)
+```
+
+## R
+
+```{r}
+library(lubridate)
+
+orders %>%
+  select(quantity, order_date) %>% 
+  mutate(
+    year = year(order_date),
+    month = month(order_date),
+    day = day(order_date)
+  ) %>% 
+  slice(1:5) %>% 
+  print()
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+select
+  quantity,
+  order_date,
+  strftime('%Y', order_date) as year,
+  strftime('%m', order_date) as month,
+  strftime('%d', order_date) as day
+from orders
+limit 5;
+
+```
+:::
+
+
+## Doing math with dates
+
+::: {.panel-tabset}
+## Python
+
+```{python}
+import pandas as pd
+from datetime import datetime, timedelta
+
+
+# Select specific columns
+selected_columns = orders[['quantity', 'order_date']].copy()
+
+# Extract year, month, and day
+selected_columns['plus_one_month'] = selected_columns['order_date'] + pd.DateOffset(months=1)
+selected_columns['plus_two_days'] = selected_columns['order_date'] + timedelta(days=2)
+selected_columns['minus_one_year'] = selected_columns['order_date'] - pd.DateOffset(years=1)
+
+# Select first 5 rows
+result = selected_columns.head(5)
+
+# Print the result
+print(result)
+```
+
+## R
+
+```{r}
+library(lubridate)
+
+orders %>%
+  select(quantity, order_date) %>% 
+  mutate(
+    plus_one_month = order_date + months(1),
+    plus_two_days = order_date + days(2),
+    minus_one_year = order_date - years(1)
+  ) %>% 
+  slice(1:5) %>% 
+  print()
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+select
+  quantity,
+  order_date,
+  strftime('%Y-%m-%d', order_date, '+1 month') as plus_one_month,
+  strftime('%Y-%m-%d', order_date, '+2 days') as plus_two_days,
+  strftime('%Y-%m-%d', order_date, '-1 year') as minus_one_year
+from orders
+limit 5;
+
+```
+:::
+
+

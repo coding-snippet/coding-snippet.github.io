@@ -15,6 +15,9 @@ website:
     contents:
       - section: "Data wrangling"
         contents:
+          - section: "Data types"
+            contents:
+              - data-wrangling/dates.qmd
           - section: "Control flow"
             contents:
               - data-wrangling/choices.qmd
