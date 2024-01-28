@@ -7,8 +7,12 @@ library(renv)
 library(ggplot2)
 library(babynames)
 
+# setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 # Establish a connection to the SQLite database
 con <- dbConnect(RSQLite::SQLite(), "data/db.sqlite")
+
+
 
 # Read the Excel file
 customers <- read_excel("data/db.xlsx", sheet = "Customers")

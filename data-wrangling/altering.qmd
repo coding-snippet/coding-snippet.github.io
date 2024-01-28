@@ -14,7 +14,7 @@ customers = r.customers
 suppliers = r.suppliers
 ```
 
-## Move columns 
+## Move columns
 
 ::: {.panel-tabset}
 ## Python
@@ -33,7 +33,14 @@ df_reordered
 
 df_reordered = customers %>% 
   select(customer_name, email, everything()) # move name to beginning
-df_reordered
+
+df_reordered_2 = customers %>% 
+  relocate(customer_id, .after = last_col()) # move name to end
+
+df_reordered_3 = customers %>% 
+  relocate(email, .before = customer_name) # move name to end
+
+df_reordered_3
 ```
 
 ## SQL
@@ -69,11 +76,16 @@ print(renamed)
 ```{r}
 
 renamed = customers %>% 
-  select(Name = customer_name, email, everything()) # new_name = old_name
+  rename(
+    Name = customer_name,
+    E_Mail = email
+  )
 renamed
 
+# using df %>% janitor::clean_names() u can get rid of white spaces, dots, etc.
 
 ```
+
 
 ## SQL
 

@@ -210,6 +210,15 @@ result <- sales %>%
   ungroup() %>%
   arrange(order_date)
 
+result <- sales %>%
+  group_by(customer_id) %>%
+  arrange(order_date) %>% 
+  mutate(
+    avg_3_rows = slide_dbl(total_cost, mean, .before = 1, .after = 1, .complete = TRUE),
+    running_sum = cumsum(total_cost),
+    orders_per_cust = n()
+  )
+
 result
 ```
 

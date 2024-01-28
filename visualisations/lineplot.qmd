@@ -1,0 +1,63 @@
+---
+title: "Line plot"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Perfect for 2 categorial + 1 numerical variables
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+
+#library(ggplot2)
+lineplot <- babynames %>% 
+  filter(name %in% c("Mona", "Anna", "Lisa"), sex == "F") %>% 
+  ggplot(
+    aes(
+      x = year,
+      y = n,
+      color = name
+    )
+  ) +
+  geom_line() +
+  labs(
+    title = "Amount of named Babies per year in US",
+    subtitle = "Selection of Anna, Mona and Lisa",
+    x = "Year",
+    y = "Number of Babies",
+    color = "Name"  #Legend title
+  ) +
+  scale_color_manual(
+    values = c("Anna" = "#d94a62", "Lisa" = "#a4eb8f", "Mona"="darkblue"),
+    breaks = c("Mona", "Lisa","Anna") # Order in the Legend
+  ) +
+  theme_minimal()
+
+print(lineplot)
+  
+    
+```
+
+## Python
+
+```{python}
+
+# content coming soon
+
+```
+:::

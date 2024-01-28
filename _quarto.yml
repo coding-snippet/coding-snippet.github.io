@@ -36,7 +36,9 @@ website:
         contents:
           - visualisations/grammar_of_graphics.qmd
           - visualisations/scatter.qmd
+          - visualisations/lineplot.qmd
           - visualisations/boxplot.qmd
+          - visualisations/heatmap.qmd
 
       - section: "Coding styles"
         contents:

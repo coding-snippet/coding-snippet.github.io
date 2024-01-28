@@ -1,0 +1,72 @@
+---
+title: "Heat maps"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Perfect for 2 categorial + 1 numerical variables
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+library(tidyverse)
+library(dplyr)
+#library(ggplot2)
+babynames %>% 
+  filter(
+    year %in% 2014:2017,
+    n > 1000
+    ) %>%
+  group_by(name, sex) %>% 
+  summarize(mean = mean(n)) %>% 
+  ungroup() %>% 
+  group_by(name) %>% 
+  mutate(
+    proz = mean/sum(mean)*100,
+    diff = abs(proz-50)
+  ) %>% 
+  ungroup() %>%
+  arrange(diff) %>% 
+  slice_head(n=8) %>% 
+  ggplot(
+    aes(
+      x = name,
+      y = sex,
+      fill = proz
+    )
+  ) +
+  geom_tile() +
+  labs(
+    title = "Babynames for both boyz and girls",
+    subtitle = "Powered by the babynames package",
+    x = "Name",
+    y = "Gender",
+    fill = "%"
+  ) +
+  theme_minimal()
+
+  
+```
+
+## Python
+
+```{python}
+
+# content coming soon
+
+```
+:::

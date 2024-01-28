@@ -206,4 +206,33 @@ limit 5;
 ```
 :::
 
+## Get today's date
 
+::: {.panel-tabset}
+## Python
+
+```{python}
+from datetime import datetime
+
+current_date = datetime.today().date()
+
+print(current_date)
+```
+
+## R
+
+```{r}
+library(lubridate)
+
+print(today())
+```
+
+## SQL
+
+```{sql}
+#| connection: con
+
+SELECT date('now') AS current_date;
+
+```
+:::
