@@ -1,0 +1,60 @@
+---
+title: "Bar Chart"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Perfect for 1 categorial + 1 numerical variable
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+
+library(dplyr)
+library(forcats)
+library(ggplot2)
+
+set.seed(123)
+
+p <- babynames %>% 
+  filter(year %in% c(1900, 1905, 1910), between(n, 1500, 8000)) %>%
+  arrange(name, year) %>% 
+  slice_head(n = 30) %>% 
+  ggplot(
+    aes(
+      x = n,
+      y = fct_reorder(name,n, .fun="sum"),
+      fill = factor(
+        year,
+        levels = c(1910, 1905, 1900)
+      )
+    )
+  ) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Bar Chart of Names by Year",
+    x = "Count",
+    y = "Name",
+    fill = "year"
+  ) +
+  theme_minimal()
+p
+
+```
+
+
+:::

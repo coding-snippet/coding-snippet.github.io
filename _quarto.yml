@@ -38,6 +38,7 @@ website:
           - visualisations/scatter.qmd
           - visualisations/lineplot.qmd
           - visualisations/boxplot.qmd
+          - visualisations/bar_chart.qmd
           - visualisations/heatmap.qmd
 
       - section: "Coding styles"
