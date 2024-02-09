@@ -6,8 +6,12 @@ library(reticulate)
 library(renv)
 library(ggplot2)
 library(babynames)
+library(janitor)
+library(ggmosaic)
+library(forcats)
 
 # setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 
 # Establish a connection to the SQLite database
 con <- dbConnect(RSQLite::SQLite(), "data/db.sqlite")

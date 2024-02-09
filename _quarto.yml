@@ -18,6 +18,7 @@ website:
           - section: "Data types"
             contents:
               - data-wrangling/dates.qmd
+              - data-wrangling/strings_factors.qmd
           - section: "Control flow"
             contents:
               - data-wrangling/choices.qmd

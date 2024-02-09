@@ -73,6 +73,7 @@ print(renamed)
 
 ## R
 
+# Renaming specific columns
 ```{r}
 
 renamed = customers %>% 

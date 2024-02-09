@@ -1,6 +1,7 @@
 ---
 title: "Bar Chart"
 ---
+
 ```{r, setup, include=FALSE}
 source("setup.R")
 ```
@@ -8,20 +9,21 @@ source("setup.R")
 ```{python}
 #| echo: false
 #| message: false
+
 orders = r.orders
 products = r.products
 customers = r.customers
 suppliers = r.suppliers
 ChickWeight = r.ChickWeight
 babynames = r.babynames
+
 ```
 
-## Perfect for 1 categorial + 1 numerical variable
 
 ::: {.panel-tabset}
-
 ## R
 
+### Stacked
 ```{r, message=FALSE}
 
 library(dplyr)
@@ -40,7 +42,7 @@ p <- babynames %>%
       y = fct_reorder(name,n, .fun="sum"),
       fill = factor(
         year,
-        levels = c(1910, 1905, 1900)
+        levels = c(1900, 1905, 1910)
       )
     )
   ) +

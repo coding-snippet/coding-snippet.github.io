@@ -1,5 +1,5 @@
 ---
-title: "Heat maps"
+title: "Heat maps & Mosaic"
 ---
 ```{r, setup, include=FALSE}
 source("setup.R")
@@ -16,9 +16,9 @@ ChickWeight = r.ChickWeight
 babynames = r.babynames
 ```
 
-## Perfect for 2 categorial + 1 numerical variables
+## Heat maps
 
-::: {.panel-tabset}
+:::{.panel-tabset}
 
 ## R
 
@@ -61,12 +61,35 @@ babynames %>%
 
   
 ```
+:::
 
-## Python
+## Mosaic plots
 
-```{python}
+:::{.panel-tabset}
 
-# content coming soon
+## R
 
+```{r, message=FALSE}
+
+# library(ggplot2)
+# library(ggmosaic)
+
+data(iris)
+
+iris %>% 
+  mutate(
+    Sepal.Length = case_when(
+      Sepal.Length <5 ~"<5",
+      Sepal.Length >=5 & Sepal.Length < 6  ~"5-6",
+      Sepal.Length >=6 ~">6"
+    )
+  ) %>% 
+  ggplot() +
+  ggmosaic::geom_mosaic(aes(x = product(Species, Sepal.Length), fill = Species)) +
+  labs(title = "Proportion of Species by Sepal.Length",
+       subtitle = "Mosaic Plot using Iris Dataset")
+
+  
 ```
+
 :::
