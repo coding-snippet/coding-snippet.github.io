@@ -1,0 +1,167 @@
+---
+title: "Histograms & Density plots"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Plotting distributions of numerical variables
+For certain tasks, we want to explore how data is distributed in order to better understand our data. Histograms, density plots and boxplots are usedful tools to achieve these tasks. In this section, we are going to take a closer look into histograms and density plots.
+
+## Histograms
+
+::: {.panel-tabset}
+
+## R
+
+Please note, that the default behaviour of geom_histogram is to center the bins. This means, that if a vector goes from 0 to 100 with binwidth = 20, the first bin will go from -10 to 9, second from 20 to 39 and so on:
+```{r, message=FALSE}
+library(ggplot2)
+library(ggthemes)
+
+#Generating a normal distribution
+values = rnorm(10000, mean = 50, sd = 15)
+unif_dist <- as.data.frame(values) %>% filter(between(values, 0, 100))
+
+p <- unif_dist %>% 
+  ggplot(aes(x=values, color = "white")) +
+  geom_histogram(binwidth = 10) + # adjust binwidth 
+  theme_minimal() +
+  theme(
+    legend.position = "None"
+  ) +
+  labs(
+    title = "Normal distribution with geom_hist",
+    subtitle = "binwidth = 10, boundary = default",
+    x = "Value",
+    y = "Count"
+  )
+p
+```
+
+If we want the first bin to start at 0, we have to set the boundary = 0
+```{r, message=FALSE}
+library(palmerpenguins)
+library(ggplot2)
+library(ggthemes)
+
+
+p <- unif_dist %>% 
+  ggplot(aes(x=values, color = "white")) +
+  geom_histogram(binwidth = 10, boundary = 0) + # adjust binwidth 
+  theme_minimal() +
+  theme(
+    legend.position = "None"
+  ) +
+  scale_x_continuous(breaks = seq(0,100,20))+
+  labs(
+    title = "Normal distribution with geom_hist",
+    subtitle = "binwidth = 10, boundary = 0",
+    x = "Value",
+    y = "Count"
+  )
+p
+```
+
+:::
+
+## Density Plots
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+library(palmerpenguins)
+library(ggplot2)
+
+penguins %>% 
+  ggplot(aes(x = flipper_length_mm, fill = "orange")) +
+  geom_density() +
+  ggthemes::theme_hc() +
+  theme(
+    legend.position = "None"
+  )+
+  labs(
+    title = "Distribution of Flipper length",
+    subtitle = "palmerpenguins package",
+    x = "Flipper length [mm]",
+    y = "Density"
+  )
+
+```
+
+
+```{r, message=FALSE}
+
+library(ggplot2)
+library(ggthemes)
+
+
+p <- unif_dist %>% 
+  ggplot(aes(x=values, color = "white", fill = "pink")) +
+  geom_density() + 
+  theme_minimal() +
+  theme(
+    legend.position = "None"
+  ) +
+  scale_x_continuous(breaks = seq(0,100,20))+
+  labs(
+    title = "Normal distribution with geom_density",
+    subtitle = "bandwidth (bw) = default",
+    x = "Value",
+    y = "Count"
+  )
+p
+```
+```{r, message=FALSE}
+
+library(ggplot2)
+library(ggthemes)
+
+
+p <- unif_dist %>% 
+  ggplot(aes(x=values, color = "white", fill = "pink")) +
+  geom_density(bw = 10) + # the larger bw, the smoother the plot
+  theme_minimal() +
+  theme(
+    legend.position = "None"
+  ) +
+  scale_x_continuous(breaks = seq(0,100,20))+
+  labs(
+    title = "Normal distribution with geom_density",
+    subtitle = "bandwidth (bw) = 10 % of range",
+    x = "Value",
+    y = "Count"
+  )
+p
+```
+
+```{r, message=FALSE}
+
+library(ggplot2)
+
+ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_density(alpha = 0.6) +
+  labs(
+    title = "Density Distribution of Sepal Length by Species",
+    x = "Sepal Length",
+    y = "Density"
+  ) +
+  theme_minimal()
+```
+
+
+:::
+

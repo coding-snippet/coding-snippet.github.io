@@ -24,6 +24,52 @@ babynames = r.babynames
 ## R
 
 ### Stacked
+
+### Stacked
+```{r, message=FALSE}
+library(dplyr)
+library(tidyr)
+library(forcats)
+library(ggplot2)
+
+df <- data.frame(
+  year = 2002:2006,
+  zurich_plant = c(12.3, 15.7, 17.3, 22.3, 24.6),
+  basel_plant = c(27.3, 32.4, 35.5,39.3, 45.2),
+  tot = c(39.6, 48.1, 52.8, 61.6, 69.8),
+  diff = c(NA,21.5, 9.8, 16.7, 13.3)
+  )
+
+long_data <- df %>%
+  pivot_longer(
+    cols = c(zurich_plant, basel_plant), 
+    names_to = "plant", 
+    values_to = "millions"
+  )
+
+
+ggplot(data = long_data, aes(x = year, y=millions)) +
+  geom_col(aes(fill=plant)) +
+  geom_text(
+    data = df,
+    aes(x = year, y = tot, label = ifelse(is.na(diff),"",paste0("[+", round(diff, 1),"Mio]"))), 
+    vjust = -0.5, 
+    size = 4, 
+    color = "black"
+  ) +
+  theme_minimal() +
+  scale_color_manual(
+    values = c("zurich_plant" = "#d94a62", "basel_plant" = "#a4eb8f")
+  ) +
+  labs(
+    title = "Revenue by plant",
+    x = "Year",
+    y = "Revenue [Mio]"
+  )
+
+
+```
+
 ```{r, message=FALSE}
 
 library(dplyr)
@@ -57,6 +103,18 @@ p <- babynames %>%
 p
 
 ```
+Adding a `facet_wrap()` allows us to separate the year column.
+```{r, message=FALSE}
 
+p2 <-  p + facet_wrap(vars(year))
+p2
+```
+
+Freeing the y axis allows us to show only relevant categories
+```{r, message=FALSE}
+
+p3 <-  p + facet_wrap(vars(year), scales = "free_y")
+p3
+```
 
 :::

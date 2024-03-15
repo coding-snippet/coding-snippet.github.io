@@ -211,6 +211,7 @@ humans = starwars %>%
   mutate(
     BMI = mass/(height/100)^2
   )
+highest_bmi <- humans %>%  filter(BMI == max(BMI))
 
 scatter <- humans %>%
   ggplot(
@@ -221,6 +222,15 @@ scatter <- humans %>%
     )
   ) +
   geom_point(size = 4, alpha = 0.8) +
+  geom_text(
+    data = highest_bmi, 
+    mapping=aes(
+      x=mass,
+      y=height,
+      label=name
+    ),
+    nudge_y = -2
+  ) +
   labs(
     title = "Length by Weight chart of famous Star Wars Heros",
     subtitle = "Colored by BMI",
@@ -273,6 +283,21 @@ scatter <- humans %>%
 
 print(scatter)
 
+```
+### Categorial vs numerical variable
+```{r, message=FALSE}
+
+library(ggplot2)
+library(ggthemes)
+
+data(diamonds)
+
+ggplot(diamonds, aes(y = cut, x = price)) +
+  geom_jitter(alpha = 0.1, size = 0.05) +
+  labs(title = "Jitter Plot of Diamond Prices by Cut",
+       x = "Cut",
+       y = "Price") +
+  theme_fivethirtyeight()
 ```
 
 ## Python

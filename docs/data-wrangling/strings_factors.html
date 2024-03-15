@@ -298,6 +298,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../visualisations/histograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Histograms &amp; Density plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../visualisations/boxplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Boxplots</span></a>
   </div>
@@ -447,6 +453,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 Four Stars  Four Stars      4
 6 Five Stars  Five Stars      5
 7 Five Stars  Five Stars      5</code></pre>
+</div>
+</div>
+</section>
+<section id="reversing-factor-order" class="level3">
+<h3 class="anchored" data-anchor-id="reversing-factor-order">Reversing factor order</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_reordered_rev  <span class="ot">&lt;-</span> df_reordered <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">stars_fct =</span> <span class="fu">fct_rev</span>(stars_fct)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(stars_fct)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>df_reordered_rev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  stars_chr   stars_fct     num
+  &lt;fct&gt;       &lt;fct&gt;       &lt;dbl&gt;
+1 Five Stars  Five Stars      5
+2 Five Stars  Five Stars      5
+3 Four Stars  Four Stars      4
+4 Three Stars Three Stars     3
+5 Two Stars   Two Stars       2
+6 Two Stars   Two Stars       2
+7 One Star    One Star        1</code></pre>
 </div>
 </div>
 </section>

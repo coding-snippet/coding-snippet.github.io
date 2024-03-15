@@ -38,7 +38,7 @@ df_reordered_2 = customers %>%
   relocate(customer_id, .after = last_col()) # move name to end
 
 df_reordered_3 = customers %>% 
-  relocate(email, .before = customer_name) # move name to end
+  relocate(email, .before = "customer_name") # move name to end
 
 df_reordered_3
 ```
@@ -87,6 +87,73 @@ renamed
 
 ```
 
+
+## SQL
+
+```{sql}
+#| connection: con
+SELECT
+  customer_name as Name,
+  customer_id,
+  email,
+  phone_number
+FROM 
+  customers;
+```
+:::
+
+## Pivotise / reshape data
+Using pivot transformations is very important for data visualisations.
+
+
+::: {.panel-tabset}
+
+## R
+
+### transforming data to longer format
+```{r}
+
+library(tibble)
+library(tidyr)
+
+wide_data <- tibble(
+  id = c(1, 2, 3),
+  time1 = c(10, 15, 20),
+  time2 = c(12, 18, 22),
+  time3 = c(14, 21, 24)
+)
+
+# Original wide data
+print("Wide data:")
+print(wide_data)
+
+# Using pivot_longer to convert to long format
+long_data <- wide_data %>%
+  pivot_longer(cols = starts_with("time"), 
+               names_to = "time_point", 
+               values_to = "measurement")
+
+# Long format data
+print("Long format data:")
+print(long_data)
+```
+
+### transforming data to wider format
+```{r}
+
+library(tibble)
+library(tidyr)
+
+wide_data <- long_data %>% 
+  pivot_wider(
+    names_from = "time_point",
+    values_from = "measurement"
+  )
+
+print("Wide data:")
+print(wide_data)
+
+```
 
 ## SQL
 

@@ -66,4 +66,18 @@ df_reordered
 ```
 
 
+### Reversing factor order
+
+```{r}
+
+df_reordered_rev  <- df_reordered %>% 
+  mutate(
+    stars_fct = fct_rev(stars_fct)
+  ) %>% 
+  arrange(stars_fct)
+
+df_reordered_rev
+
+```
+
 :::

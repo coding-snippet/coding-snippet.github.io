@@ -1,0 +1,53 @@
+---
+title: "Pie Chart"
+---
+
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+
+```
+
+
+::: {.panel-tabset}
+## R
+
+```{r, message=FALSE}
+library(ggplot2)
+library(viridis)
+
+data <- data.frame(
+  category = c("Category1", "Category2", "Category3"),
+  percentage = c(20, 35, 45)
+)
+
+pie_chart <- ggplot(data, aes(x = "", y = percentage, fill = category)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(
+    aes(label = paste0(percentage, "%")), 
+    position = position_stack(vjust = 0.5), 
+    hjust = 1,
+    size = 5,
+    color = "white"
+  ) 
+
+pie_chart
+
+
+```
+
+
+:::

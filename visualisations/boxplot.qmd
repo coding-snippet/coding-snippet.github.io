@@ -48,6 +48,7 @@ print(boxplot)
 
 ```
 
+Adding a violin plot over the boxplot and reforder by median
 ```{r, message=FALSE}
 #library(ggplot2)
 library(forcats)
@@ -61,7 +62,7 @@ boxplot <- mpg %>%
     )
   ) +
   geom_boxplot() +
-  geom_jitter(alpha=0.3) +
+  geom_violin(alpha = 0.35) +
   labs(
     title = "Distribution of hwy per class",
     x = "hwy",
@@ -73,5 +74,22 @@ boxplot <- mpg %>%
 print(boxplot)
 
 ```
+
+
+```{r, message=FALSE}
+
+library(ggplot2)
+library(ggthemes)
+
+ggplot(iris, aes(x = Sepal.Length, y = Species,  fill = Species)) +
+  geom_boxplot() +
+  labs(
+    title = "Density Distribution of Sepal Length by Species",
+    x = "Sepal Length",
+    y = "Density"
+  ) +
+  ggthemes::theme_tufte()
+```
+
 
 :::

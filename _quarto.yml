@@ -38,8 +38,10 @@ website:
           - visualisations/grammar_of_graphics.qmd
           - visualisations/scatter.qmd
           - visualisations/lineplot.qmd
+          - visualisations/histograms.qmd
           - visualisations/boxplot.qmd
           - visualisations/bar_chart.qmd
+          - visualisations/pie_chart.qmd
           - visualisations/heatmap.qmd
 
       - section: "Coding styles"

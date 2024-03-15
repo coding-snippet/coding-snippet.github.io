@@ -264,6 +264,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../visualisations/histograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Histograms &amp; Density plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../visualisations/boxplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Boxplots</span></a>
   </div>
@@ -344,7 +350,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The grammar of graphics consists of the following components:</p>
 <section id="dataset-and-aesthetics" class="level3">
 <h3 class="anchored" data-anchor-id="dataset-and-aesthetics">Dataset and aesthetics</h3>
-<p>For example: <code>ggplot(data=df, mapping=aes(x=col1, y=col2))</code>. Aesthestics are things like the axes, shapes, colors, groups and so on. It is important to remember, that the aesthetics that are written inside the <code>ggplot()</code>will be inherited by the geometric objects, if they are not overwritten manually.</p>
+<p>For example: <code>ggplot(data=df, mapping=aes(x=col1, y=col2))</code>. Aesthestics are things like the axes, shapes, colors, groups and so on. It is important to remember, that the aesthetics that are written inside the <code>ggplot()</code>will be inherited by the geometric objects, if they are not overwritten manually. The data needs to be in a form that allows you to assing <code>one</code> column to <code>one</code> aesthetic. This means, that wide data must be converted to long data unsing pivot transformations.</p>
 </section>
 <section id="geometric-objects" class="level3">
 <h3 class="anchored" data-anchor-id="geometric-objects">Geometric Objects</h3>
