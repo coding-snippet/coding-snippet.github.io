@@ -236,3 +236,55 @@ SELECT date('now') AS current_date;
 
 ```
 :::
+
+
+# Timespans
+There are three different kinds of time spans:
+- duration (= amount of seconds)
+- period (= date period (e.g. 1 month can be 28,29,30,31 days))
+- interval (= timeslot between start and end date)
+
+## Durations
+A duration represents a length of time, without reference to specific start or end points.
+
+::: {.panel-tabset}
+
+## R
+In R, durations are measured in seconds
+```{r, message=FALSE}
+
+duration(minutes = 4, hours = 3)
+
+```
+We can also add or subtract durations from timestamps
+```{r, message=FALSE}
+
+today() + duration(minutes = 4, hours = 3)
+
+```
+
+
+:::
+
+
+## Intervals
+An interval represents a specific time period with a defined start and end point.
+
+::: {.panel-tabset}
+
+## R
+
+```{r, message=FALSE}
+library(lubridate)
+
+# Creating an interval
+start <- ymd_hms("2022-01-01 00:00:00")
+end <- ymd_hms("2022-01-01 12:00:00")
+interval <- start %--% end
+
+# Checking if a specific time falls within the interval
+test_time <- ymd_hms("2022-01-01 06:00:00")
+test_time %within% interval # Returns TRUE
+```
+:::
+

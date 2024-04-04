@@ -28,4 +28,3 @@ orders <- read_excel("data/db.xlsx", sheet = "Orders")
 babynames = babynames::babynames
 # installing python packages:
 #py_install("seaborn")
-

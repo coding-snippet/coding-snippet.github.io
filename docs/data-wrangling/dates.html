@@ -316,6 +316,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../visualisations/pie_chart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pie Chart</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../visualisations/heatmap.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Heat maps &amp; Mosaic</span></a>
   </div>
@@ -354,6 +360,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#extracting-info-from-dates" id="toc-extracting-info-from-dates" class="nav-link" data-scroll-target="#extracting-info-from-dates">Extracting info from dates</a></li>
   <li><a href="#doing-math-with-dates" id="toc-doing-math-with-dates" class="nav-link" data-scroll-target="#doing-math-with-dates">Doing math with dates</a></li>
   <li><a href="#get-todays-date" id="toc-get-todays-date" class="nav-link" data-scroll-target="#get-todays-date">Get today’s date</a></li>
+  <li><a href="#timespans" id="toc-timespans" class="nav-link" data-scroll-target="#timespans">Timespans</a>
+  <ul class="collapse">
+  <li><a href="#durations" id="toc-durations" class="nav-link" data-scroll-target="#durations">Durations</a></li>
+  <li><a href="#intervals" id="toc-intervals" class="nav-link" data-scroll-target="#intervals">Intervals</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -762,7 +773,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(current_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2024-03-15</code></pre>
+<pre><code>2024-04-04</code></pre>
 </div>
 </div>
 </div>
@@ -772,7 +783,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">today</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-03-15"</code></pre>
+<pre><code>[1] "2024-04-04"</code></pre>
 </div>
 </div>
 </div>
@@ -789,7 +800,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">2024-03-15</td>
+<td style="text-align: left;">2024-04-04</td>
 </tr>
 </tbody>
 </table>
@@ -798,8 +809,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="timespans" class="level1">
+<h1>Timespans</h1>
+<p>There are three different kinds of time spans: - duration (= amount of seconds) - period (= date period (e.g.&nbsp;1 month can be 28,29,30,31 days)) - interval (= timeslot between start and end date)</p>
+<section id="durations" class="level2">
+<h2 class="anchored" data-anchor-id="durations">Durations</h2>
+<p>A duration represents a length of time, without reference to specific start or end points.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>In R, durations are measured in seconds</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duration</span>(<span class="at">minutes =</span> <span class="dv">4</span>, <span class="at">hours =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "11040s (~3.07 hours)"</code></pre>
+</div>
+</div>
+<p>We can also add or subtract durations from timestamps</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">+</span> <span class="fu">duration</span>(<span class="at">minutes =</span> <span class="dv">4</span>, <span class="at">hours =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-04-04 03:04:00 UTC"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="intervals" class="level2">
+<h2 class="anchored" data-anchor-id="intervals">Intervals</h2>
+<p>An interval represents a specific time period with a defined start and end point.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an interval</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2022-01-01 00:00:00"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2022-01-01 12:00:00"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>interval <span class="ot">&lt;-</span> start <span class="sc">%--%</span> end</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking if a specific time falls within the interval</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>test_time <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2022-01-01 06:00:00"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>test_time <span class="sc">%within%</span> interval <span class="co"># Returns TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

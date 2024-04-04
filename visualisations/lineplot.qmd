@@ -53,11 +53,44 @@ print(lineplot)
     
 ```
 
-## Python
 
-```{python}
+```{r, message=FALSE}
 
-# content coming soon
+library(ggplot2)
+library(lubridate) # For handling dates
+
+# Create a data frame with the start and end dates of the last 10 presidents
+presidents_data <- data.frame(
+  President = c(
+    "Ronald Reagan", "George H. W. Bush", "Bill Clinton", "George W. Bush",
+    "Barack Obama", "Donald Trump", "Joe Biden"
+  ),
+  Start_Date = as.Date(c(
+    "1981-01-20", "1989-01-20", "1993-01-20", "2001-01-20",
+    "2009-01-20", "2017-01-20", "2021-01-20"
+  )),
+  End_Date = as.Date(c(
+    "1989-01-20", "1993-01-20", "2001-01-20", "2009-01-20",
+    "2017-01-20", "2021-01-20", "2025-01-20"
+  ))
+) %>% mutate(
+  President = factor(President) %>% fct_reorder(Start_Date, .fun="min")
+) 
+
+# Create a ggplot2 plot
+ggplot(presidents_data, aes(y = President, xmin = Start_Date, xmax = End_Date, color = President)) +
+  geom_linerange() +
+  labs(title = "Term Duration of the Last 10 U.S. Presidents",
+       x = "President", y = "Term Duration") +
+  scale_x_date(
+    date_labels = "%Y",
+    date_breaks = "5 years",
+    ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
+  )
 
 ```
+
 :::
