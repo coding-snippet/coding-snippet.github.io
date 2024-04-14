@@ -13,7 +13,7 @@ library(forcats)
 
 #
 
-# setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 
 # Establish a connection to the SQLite database

@@ -1,0 +1,141 @@
+---
+title: "Maps"
+---
+```{r, setup, include=FALSE}
+source("setup.R")
+```
+
+```{python}
+#| echo: false
+#| message: false
+orders = r.orders
+products = r.products
+customers = r.customers
+suppliers = r.suppliers
+ChickWeight = r.ChickWeight
+babynames = r.babynames
+```
+
+## Visualizing data on Maps
+
+
+::: {.panel-tabset}
+
+## R
+
+### `ggmap`library
+D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2.<br>
+The R Journal, 5(1), 144-161.<br>
+URL http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf.
+
+
+Data Source:<br>
+https://www.statistik.bs.ch/<br>
+Data set: #100120<br>
+Downloaded at: 07.April 2024
+
+
+Map Source:<br>
+Google Maps<br>
+Location: Basel, Switzerland<br>
+Downloaded at: 14.04.2024
+
+```{r, message=FALSE, warning=FALSE}
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(janitor)
+library(readxl)
+library(ggmap)
+library(RColorBrewer)
+
+options(digits = 4) #for display of coordinates
+
+#reading in data from https://www.statistik.bs.ch/
+df_accidents <- read_excel("data/100120.xlsx")  %>%
+  janitor::clean_names() %>% 
+  separate(geo_point, into = c("y", "x"), sep = ",") %>% # make coordinates accessible
+  mutate(
+    x = as.double(x),
+    y = as.double(y)
+  )
+
+#get map from Google API
+#ggmap::register_google("add your api key here")
+# map_bs_road <- ggmap::get_map(location = "Basel", zoom = 14, maptype = "roadmap")
+# ggmap_bs_road <-ggmap(map_bs_road)
+# map_bs_satellite <- ggmap::get_map(location = "Basel", zoom = 14, maptype = "satellite")
+# ggmap_bs_satellite <-ggmap(map_bs_satellite)
+# saveRDS(ggmap_bs_satellite, "data/ggmap_bs_satellite.rds")
+# saveRDS(ggmap_bs_road, "data/ggmap_bs_road.rds")
+ggmap_bs_road <- readRDS("data/ggmap_bs_road.rds")
+ggmap_bs_satellite <- readRDS("data/ggmap_bs_satellite.rds")
+
+df_insured_pedestrian_bicycle <- df_accidents %>%
+  filter(
+    beschreibung_der_unfallschwerekategorie %in% c(
+      "3 Unfall mit Schwerverletzten",
+      "2 Unfall mit Leichtverletzten"
+      ),
+    beschreibung_zum_unfalltyp == "Fussgängerunfall",
+    fahrradbeteiligung == "true"
+  ) %>% 
+  group_by(unfallstunde) %>% 
+  mutate(
+   count_accidents = n() 
+  ) %>% 
+  ungroup()
+
+year_from = min(df_insured_pedestrian_bicycle$unfalljahr)
+year_to = max(df_insured_pedestrian_bicycle$unfalljahr)
+
+draw_map_plot <- function(map) {
+  map +
+  geom_point(
+    data = df_insured_pedestrian_bicycle,
+    mapping = aes(x = x, y = y),
+    alpha = 0.4,
+    size = 2,
+    color = "red"
+  ) +
+  theme_minimal() +
+  #xlim(c(7.58,7.60)) +
+  labs(
+    y = "Latitude",
+    x = "Longitude",
+    title = "Basler Fussgängerunfälle mit Velo-Einfluss",
+    subtitle = "Leicht- bis Schwerverletzte.",
+    caption = paste0("Vom Jahr ", year_from, " bis ", year_to, ".")
+  )
+}
+
+draw_map_plot(ggmap_bs_satellite)
+```
+```{r, message=FALSE, warning=FALSE}
+draw_map_plot(ggmap_bs_road)
+options(reset = TRUE)
+```
+```{r, message=FALSE, warning=FALSE}
+p <- df_insured_pedestrian_bicycle %>% 
+  select(unfallstunde, count_accidents) %>% 
+  distinct() %>% 
+  ggplot(aes(x=unfallstunde, y=count_accidents, fill = count_accidents))+
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  theme(legend.title = element_blank())  +
+  scale_fill_gradientn(colours = brewer.pal(9, "YlOrRd")) +
+  scale_x_continuous(breaks = seq(0, 23, by = 2)) +
+  labs(
+    title = "Anzahl Fusgängerunfälle mit Velo-Einfluss pro Tagesstunde",
+    subtitle = "Leicht- bis Schwerverletzte",
+    x = "Tageszeit",
+    y = "Anzahl",
+    caption = paste0("Vom Jahr ", year_from, " bis ", year_to, ".")
+  )
+p
+```
+
+
+:::

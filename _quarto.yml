@@ -43,6 +43,7 @@ website:
           - visualisations/bar_chart.qmd
           - visualisations/pie_chart.qmd
           - visualisations/heatmap.qmd
+          - visualisations/maps.qmd
 
       - section: "Coding styles"
         contents:
